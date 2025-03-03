@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Uso dei font</title>
+	 <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet"> 
+	<style>
+h1 { font-size:3rem ; font-family: serif}
+h2 { font-size:2.25rem ; font-family: serif; margin-top:3rem}
+h3 { font-size:1.5rem ; font-family: serif}
+p, li { font-family:sans-serif }	
+
+h1 { text-shadow: 5px 5px 10px red; }
+#img_parmigiano { vertical-align: bottom; }
+span {font-weight:bold}
+
+#img_blu { vertical-align: middle;}
+#desc_blu {line-height: 3em; background-color:yellow}
+.gorgonzola { line-height: 1.35em; color: blue ; text-transform: capitalize; text-align: center; }
+
+#roquefort {letter-spacing:1em; font-family: 'Hachi Maru Pop', cursive;}
+.roquefort { word-spacing: 2em ; color:red}
+
+#taleggio { text-decoration: underline;}
+#img_taleggio { vertical-align: top; }
+#desc_cruda { text-align: right; }
+#desc_taleggio_1 { font-family: serif; font-style: italic;  }
+
+	</style>
+</head>
+<body>
+	<h1><img src="parmigiano.png" id="img_parmigiano" alt="Spicchio di parmigiano">Formaggi</h1>
+	<div id="col">
+	<p id="descrizione">Il formaggio è un <span>prodotto caseario</span> ottenuto dalla coagulazione acida
+		o presamica del latte intero, parzialmente o totalmente scremato per
+		coagulazione delle caseine, facendo anche uso di fermenti e sale da cucina. </p>
+	<p>La storia del formaggio ha origini antichissime nel bacino del Mediterraneo, 
+		in nord Africa e in Asia minore. La leggenda narra che un pastore avesse messo del 
+		latte in uno stomaco di pecora in cui era rimasto del caglio, dove si trasformò in 
+		formaggio; probabilmente fu invece determinante l'osservazione delle viscere di animali 
+		macellati ancora in fase di allattamento. Le testimonianze più antiche risalgono al III millennio a.C.</p>
+	</div>
+
+	<h2>Formaggi blu <img id="img_blu" src="blu.jpg" alt="Bleu d'Aoste"></h2>
+	<p id="desc_blu">Sono quei formaggi come il Gorgonzola, lo Stilton inglese e il Roquefort, 
+		il cui processo di lavorazione prevede la comparsa di striature e chiazze verdi-blu 
+		all'interno della pasta, dovute alla formazione di miceli colorati dati dalle
+		colture di funghi del genere Penicillium alle quali le forme vengono sottoposte.</p>
+
+	<h3>Gorgonzola</h3>
+	<p class="gorgonzola">Il latte vaccino è intero e pastorizzato.</p>
+	<p class="gorgonzola">Dal punto di vista del processo produttivo il gorgonzola non si distacca
+		del metodo di ottenimento di uno stracchino (quale è il gorgonzola).</p>
+	<p class="gorgonzola">Le peculiarità sono l'aggiunta nel latte in caldaia (a circa 30-32 °C; per questo è un formaggio a pasta 
+			cruda come tutti gli stracchini), oltre ai comuni fermenti (starter),
+			la coltura di penicillium e i lieviti.</p>
+    <p class="gorgonzola">Durante la stagionatura, si applicano alla forma delle forature
+			per far sì che si sviluppino le muffe (causate dalle spore di penicillium 
+			addizionate in caldaia) e si attivino i processi di trasformazioni connessi.</p>
+	<p class="gorgonzola">Da notare che per il gorgonzola moderno i ceppi di penicillium 
+		sono di tipo selezionato e aggiunto (nel latte); nel secoli scorsi le muffe erano
+		invece quelle derivate dall'ambiente di stagionatura (grotte in primis) che 
+		è la situazione attuale di altri formaggi ad erborinatura naturale ovvero con muffe 
+		non aggiunte (standard/industriali o locali che siano).</p> 
+
+	<h3 id="roquefort">Roquefort</h3>
+	<p class="roquefort">Il roquefort è un formaggio francese, erborinato, prodotto con latte di pecora,
+		originario di Roquefort-sur-Soulzon (Francia del sud). La caratteristica principale 
+		del roquefort è la presenza di venature blu-verdi (simili a quelle
+		dell'italiano gorgonzola), dovute allo sviluppo di una muffa, il Penicillium roqueforti
+		(o Penicillium glaucum), la crosta è umida, la pasta è untuosa, compatta, erborinata.</p>
+	<p class="roquefort">Di forma cilindrica con facce piane del diametro di 19–20 cm, scalzo diritto, alto 8,5-11,5 cm, 
+		il roquefort ha un peso intorno ai 2,5–3 kg. Il formaggio viene fatto maturare
+		in un sistema di grotte in cui temperatura e umidità rimangono costanti nel tempo.</p>
+	<p class="roquefort">Il gusto varia a seconda del tempo di maturazione, che può andare dai tre ai nove mesi, 
+		solitamente il periodo di produzione parte nel mese di febbraio per terminare in ottobre. </p>
+
+	
+	<h2>Formaggi a pasta cruda <img id="img_taleggio" src="taleggio.jpg" alt="taleggio"></h2>
+	<p id="desc_cruda">I formaggi a "pasta cruda" sono come la robiola o il taleggio, la cui cagliata 
+		non è stata sottoposta a nessun processo di cottura o riscaldamento e 
+		la concentrazione dei grassi avviene unicamente per disidratazione.</p>
+	
+	<h3 id="taleggio">Taleggio</h3>
+	<p id="desc_taleggio_1">Il Taleggio (Talegg in lingua lombarda) prende il nome dall'omonima valle, 
+		situata nell'alto bergamasco. La produzione di questo formaggio nasce dall'esigenza
+		degli abitanti della zona di conservare il latte eccedente il consumo diretto.
+		Inizialmente il formaggio così prodotto veniva chiamato "stracchino" (strachin in lingua lombarda),
+		nome che per secoli in Lombardia ha contraddistinto,
+		più che un determinato formaggio, in generale tutti i formaggi molli a forma quadrata.</p>
+	<p id="desc_taleggio_2">Il termine deriva dall'espressione lombarda "strach", che significa stanco,
+		e si riferisce al fatto che il formaggio veniva fatto (e da alcuni viene fatto tuttora)
+		col latte della mungitura serale, quando le mucche giungevano alla stalla "stanche"
+		dopo essere state a pascolare tutto il giorno.</p>
+</body>
+</html>

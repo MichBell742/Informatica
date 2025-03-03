@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+table { border-collapse: collapse }
+td { border: 1px solid blue ; padding:0.5em}
+th { border: 1px solid blue ; background-color: lightgray ; padding:0.5em}
+h2 { margin-top:2em ; color: green ; border-bottom:1px dotted green}
+body {font-family: Verdana, Arial ; margin-left: 2em ; margin-right:2em}
+p > em { font-style:normal; font-weight: bold }
+h1 > em { font-style:normal; color:red  }
+#storia { background-color: yellow ; padding: 0.5em ; padding-left:3em ; border-left: 2px dashed red}
+
+.loghi { float: right; background-color: lightblue ; padding:10px ; border:3px solid black ; margin-left:1em}
+img {float: left; border:3px solid green; margin-right:1em}
+.legge { font-style: italic; font-family: Times }
+.intro { font-size:125% }
+#tipo em { background-color: yellow; border-bottom: 2px solid red }

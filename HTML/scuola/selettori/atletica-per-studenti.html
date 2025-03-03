@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Atletica leggera</title>
+	<style>
+		* { padding: 0.25em ; margin: 0.2rem} /* mette il padding anche ad em... che bello non è */
+		body { font-family: Optima, Verdana, Sans, sans-serif }
+		section { border: 2px solid red }
+		article { border: 2px dashed red }
+		
+		h1:hover { color: red }
+		
+		h3 ~ p { background-color: cyan } /* soltanto i paragrafi dopo un h3 sono con sfondo ciano */
+		h2:first-child { color: green } /* solo il primo h2 è verde */
+		
+		section + article { background-color: yellow } /* solo l'articolo dopo la sezione ha sfondo giallo */
+		
+		p > em { border-top: 3px solid black } /* solo gli em figli diretti di p hanno il bordo sopra,
+												  ce ne è uno dentro lo strong "42,195 km" che non ha il bordo */
+		p em { background-color: pink }
+		
+		article h2 em { background-color: red }
+		
+	</style>
+</head>
+<body>
+	<h1><em>Atletica</em> leggera</h1>
+	<p>L'atletica leggera è un insieme di discipline sportive 
+	che possono essere sommariamente suddivise in: corse su pista, 
+	concorsi (lanci, salti in elevazione e salti in estensione), 
+	prove multiple, corse su strada, marcia, corsa campestre e corsa in montagna. </p>
+	<section><!-- https://developer.mozilla.org/it/docs/Web/HTML/Element/section -->
+		<h2>Corsa</h2>
+		<h3>100 metri piani</h3>
+		<p>I 100 metri piani sono una specialità sia maschile che femminile
+		dell'atletica leggera; sono una disciplina di velocità pura e fanno 
+		parte del programma olimpico sin dalla prima edizione del 1896 
+		(1928 per quanto riguarda le donne).</p>
+		<p>È la più breve gara outdoor dell'atletica leggera e la più veloce: 
+		gli atleti corrono su una pista rettilinea lungo una distanza di <em>100 m</em> 
+		con partenza dai blocchi.</p> 
+		<h3>Maratona</h3>
+		<p>La maratona <strong>è una specialità sia maschile che femminile dell'atletica leggera.
+		Si tratta di una gara di corsa sulla distanza di <em>42,195 km</em></strong>.</p> 
+		<p>La distanza della maratona non venne subito standardizzata 
+		e fino alla maratona olimpica del 1924 ebbe diverse variazioni,
+		comprese tra i 40 e i 42,75 km. Nei primi anni la distanza della maratona 
+		era di circa 40 km, cioè la distanza tra Maratona e Atene.</p>
+	</section>
+	<section>
+		<h2><em>Salto</em> in alto</h2>
+		<p>Il salto in alto è una specialità sia maschile che femminile dell'atletica 
+		leggera in cui l'atleta deve superare con un salto un'asticella orizzontale 
+		messa a una certa altezza. Il salto si può effettuare in qualsiasi modo, 
+		purché ci si stacchi da terra con un piede solo.</p>
+	</section>
+	
+	<article><!-- https://developer.mozilla.org/it/docs/Web/HTML/Element/article -->
+		<h2>Lancio del <em>giavellotto</em></h2>
+		<p>Il lancio del giavellotto, a volte definito anche tiro del giavellotto,
+		è una specialità sia maschile che femminile dell'<em>atletica leggera</em>,
+		in cui l'atleta cerca di scagliare il più lontano possibile un attrezzo
+		di forma affusolata fatto di metallo e fibra di vetro
+		detto per l'appunto giavellotto.</p>
+		<h2>Lancio del disco</h2>
+		<p>Il lancio del disco è una specialità sia maschile che femminile 
+		dell'atletica leggera in cui l'atleta cerca di scagliare il più lontano 
+		possibile un attrezzo di forma lenticolare fatto di <em>legno</em>, con un'anima 
+		in metallo (il disco).</p>
+		<p>Il lancio del disco è uno sport antico. Il Discobolo di Mirone, 
+		la celeberrima scultura che ritrae un atleta che si appresta a scagliare 
+		il disco, risale al V secolo a.C. Nelle Olimpiadi moderne il lancio del disco 
+		maschile è presente sin dalla prima edizione, mentre la gara femminile fu 
+		introdotta ai Giochi di Amsterdam 1928.</p>
+	</article>
+	
+	<article>
+		<h2>Decathlon</h2>
+		<p>Il decathlon è una specialità sia maschile che femminile dell'atletica leggera,
+		composta da dieci gare di diverse discipline. Fa parte delle prove multiple.</p>
+		<p>Nelle competizioni internazionali il decathlon è ufficialmente riservato
+		agli uomini, mentre la corrispondente disciplina femminile è l'eptathlon,
+		composto da sette gare.</p> 
+	</article>
+</body>
+</html>

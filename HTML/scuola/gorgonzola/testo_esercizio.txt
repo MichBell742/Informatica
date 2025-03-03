@@ -1,0 +1,23 @@
+- inserire tutti i file in una cartella chiamata gorgonzolaCognome
+- tutte le pagine html devono contenere alla destra del tag html 
+  un commento con il nome e cognome di chi fa l'esercizio
+- va usato un foglio di stile unico (in un file esterno)
+- il sito è composto da 3 pagine html: 
+  gorgonzola.html, denominazioni.html e formaggi.html
+- il link "formaggio" in gorgonzola.html porta alla pagina formaggi.html
+- il link "DOP" in gorgonzola.html porta alla pagina denominazioni.html
+- in generale i documenti devono assomigliare il più possibile 
+  alle foto esemplificative (file screenshot-pagina-*)
+- tutte le caselle della tabella devono avere un bordo di 1 pixel blu
+- tutte le caselle della tabella devono avere dello spazio tra il bordo 
+  e il loro contenuto
+- le intestazioni della tabella devono avere uno sfondo griglio chiaro
+- i titoli secondari devono essere vedi e con una riga verde puntinata, 
+  devono lasciare prima del titolo una spazio doppio rispetto al titolo stesso
+- la pagina deve avere uno spazio alla destra e alla sinistra del testo
+- gli enfatizzati nei paragrafi sono in grassetto ma non in corsivo
+- gli enfatizzati nel titolo sono in rosso (ne grassetto ne corsivo)
+- i paragrafi che contengono norme di legge sono in corsivo 
+  e con un font con le grazie (tipo Times New Roman)
+- il paragrafo introduttivo ha un carattere un po più grande del normale 
+  (1/4 in più)
