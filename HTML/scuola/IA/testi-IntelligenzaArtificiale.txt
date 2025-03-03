@@ -1,0 +1,56 @@
+ l'h1 non ha margine bianco intorno
+ le robe evidenziate in tabella e negli h2 sono <em>
+ i font dei titoli sono serif altri no
+ il link punta verso enciclopedia treccani
+-----------------------------------------------------------------------------
+Intelligènza artificiale
+
+Intelligènza artificiale (IA) Disciplina che studia se e in che modo
+si possano riprodurre i processi mentali più complessi mediante l'uso di un computer.
+Tale ricerca si sviluppa secondo due percorsi complementari: da un lato l'intelligènza
+artificiale cerca di avvicinare il funzionamento dei computer alle capacità
+dell'intelligenza umana, dall'altro usa le simulazioni informatiche per fare 
+ipotesi sui meccanismi utilizzati dalla mente umana.
+IA@treccani.it
+
+IA vs. Algoritmi classici
+
+        Tipo di Problema
+        Algoritmi Classici
+        Algoritmi di Intelligenza Artificiale
+
+        Calcolo matematico
+        Operazioni ben definite (es. ordinamento, ricerca binaria)
+        Problemi senza soluzione chiusa (es. previsione di funzioni complesse)
+
+        Ottimizzazione
+        Problemi con vincoli chiari (es. programmazione lineare)
+        Problemi con molte variabili e relazioni non lineari (es. reti neurali per l’ottimizzazione)
+
+        Riconoscimento pattern
+        Casi semplici e strutturati (es. espressioni regolari)
+        Dati complessi e rumorosi (es. riconoscimento immagini, NLP)
+
+        Automazione
+        Processi rigidi e ripetitivi (es. automi a stati finiti)
+        Sistemi adattivi e dinamici (es. robotica con reinforcement learning)
+
+        Predizioni e decisioni
+        Modelli deterministici e statistici semplici (es. regressione lineare)
+        Apprendimento da dati storici e scenari complessi (es. sistemi di raccomandazione)
+
+Caratteristiche principali di un algoritmo di Machine Learning
+Il Machine Learning è un ramo dell’IA che permette ai computer di apprendere dai dati, identificare pattern e fare previsioni senza essere esplicitamente programmati per ogni compito.
+
+    Apprendimento dai dati – L'algoritmo identifica schemi e relazioni nei dati senza istruzioni esplicite, migliorando le sue prestazioni con l’esperienza.
+    Generalizzazione – Dopo l’addestramento su un set di dati, l’algoritmo deve essere in grado di fare previsioni o classificazioni su dati nuovi e mai visti.
+    Adattabilità – Può aggiornarsi e adattarsi a nuovi dati senza essere riprogrammato, rendendolo utile per problemi in evoluzione.
+    Non deterministico – A differenza degli algoritmi classici, può fornire risultati diversi in base ai dati di addestramento e ai parametri utilizzati.
+
+
+Caratteristiche fondamentali di un Large Language Model
+Un Large Language Model (LLM) è un modello di intelligenza artificiale con miliardi di parametri, addestrato su vasti dataset testuali per comprendere, generare e contestualizzare il linguaggio naturale in modo avanzato.
+
+    Dimensione del modello – Deve avere un numero elevato di parametri (miliardi o più), consentendo di apprendere pattern complessi nel linguaggio naturale.
+    Addestramento su grandi quantità di dati – Deve essere stato pre-addestrato su dataset di testo molto ampi e diversificati, includendo libri, articoli, pagine web e altri contenuti.
+    Capacità di generare testo in modo autoregressivo – Deve produrre testo prevedendo la parola successiva basandosi sul contesto, generando risposte coerenti e contestualmente rilevanti.
