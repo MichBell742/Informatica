@@ -1,34 +1,66 @@
 body{
     margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, sans-serif;
 }
 h1 img{
     width: 4em;
     padding: 0.5em;
     margin-right: 3em;
-    vertical-align: middle;
     align-items: start;
+}
+img{
+    vertical-align: middle;
 }
 h1{
     background-color: darkblue;
     color: white;
     margin-top: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 h2{
     background-color: blue;
     color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    clear: right;
 }
 a + h2{
     border-top: 0.25em solid orange;
     border-bottom: 0.25em solid orange;
-
+    text-align: center;
+}
+a{
+    display: block;
+    float: right;
+    padding-bottom: 2em;
 }
 table{
     border-collapse: collapse;
+    margin: auto;
 }
 td, th{
     border: 1px solid blue;
+    padding: 1em;
 }
-span{
+th{
+    background-color:lightblue;
+}
+h2 em{
     color: darkblue;
     font-weight: bold;
+    font-style: normal;
+}
+h2 img{
+    height: 2em;
+    padding: 0em 2em 0em 0em;
+}
+section{
+    margin: 2em;
+}
+div{
+    background-color: yellow;
+    width: 12em;
+    float: right;
+    padding: 1em;
+    margin-left: 1em;
+    clear: bottom;
 }
