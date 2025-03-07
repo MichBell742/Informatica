@@ -19,21 +19,26 @@ header p{
     text-align: center;
 }
 nav{
-    height: 2em;
     background-color: rgb(45, 45, 45);
+    text-align: center;
 }
 nav ul{
     margin: auto;
     list-style: none;
+    padding: 0.5em 1em 0.5em 1em;
 }
 nav ul li{
-    float: left;
+    display: inline;
     height: 2em;
-    margin: 0.5em 1em 0.5em 1em;
+    padding: 0.5em 1em 0.5em 1em;
 }
 nav ul li a{
     color: white;
     text-decoration: none;
+}
+nav ul li a:hover{
+    color: white;
+    text-decoration: underline;
 }
 section{
     padding: 1em;
@@ -46,6 +51,7 @@ img{
     width: 40vw;
     border-radius: 20px;
     padding: 0.5em;
+    vertical-align: top;
 }
 ul, ol{
     padding-left: 1em;
@@ -66,9 +72,30 @@ td,th{
     padding: 0.5em;
     border: 1px solid green;
 }
-tr:hover{
-    background-color: rgba(128, 128, 128, 0.163);
+tr:nth-child(odd){
+    background-color: rgba(255, 205, 148, 0.400);
 }
-div{
+tr:hover{
+    background-color: rgba(0, 0, 0, 0.075);
+}
+div.album{
     text-align: center;
+}
+footer{
+    background-color: rgb(45, 45, 45);
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+footer p{
+    padding: 1em 0;
+    margin: 0;
+}
+footer p a{
+    color: green;
+    text-decoration: none;
+}
+footer p a:hover{
+    color: green;
+    text-decoration: underline;
 }

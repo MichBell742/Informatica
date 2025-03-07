@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>griglie</title>
+    <style>
+        body{
+            box-sizing: border-box;
+            display: grid;
+            padding: 3em;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(2,20vw);
+            grid-gap: 2em;
+        }
+        div{
+            border: 0.75rem solid darkgreen;
+            padding: 1rem;
+            font-size: 4vw;
+        }
+        /* avremmo anche potuto utilizzare div:nth-child(1...) evitando di inserire gli id*/
+        #uno{
+            background-color: pink;
+        }
+        #due{
+            background-color: cyan;
+        }
+        #tre{
+            background-color: yellow;
+        }
+        #qua{
+            background-color: red;
+        }
+        #cin{
+            background-color: darkred;
+        }
+        #sei{
+            background-color: blue;
+        }
+        #set{
+            background-color: white;
+        }
+        #ott{
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div id="uno">uno</div>
+    <div id="due">dos</div>
+    <div id="tre">tres</div>
+    <div id="qua">catro</div>
+    <div id="cin">cinco</div>
+    <div id="sei">seis</div>
+    <div id="set">siete</div>
+    <div id="ott">ocho</div>
+</body>
+</html>
