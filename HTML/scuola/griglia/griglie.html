@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>griglie</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        h1{
+            padding: 0.5em;
+        }
+        header p{
+            padding: 0em 1em 1em 0.5em;
+        }
+        p{
+            padding: 1em 0em 1em 0.25em;
+        }
+        body{
+            display: grid;
+            grid-template-columns: 20% auto;
+            grid-template-rows: 7em 3em auto;
+            grid-template-areas: 
+            "header header"
+            "nav nav"
+            "aside section"
+            "aside article";
+            padding: 0;
+        }
+        header{
+            grid-area: header;
+            background-color: red;
+            height: 200px;
+        }
+        nav{
+            grid-area: nav;
+            background-color: yellow;
+        }
+        nav p{
+            text-align: center;
+            padding: auto;
+        }
+        aside{
+            grid-area: aside;
+            background-color: pink;
+        }
+        section{
+            grid-area: section;
+            background-color: green;
+        }
+        article{
+            grid-area: article;
+            background-color: grey;
+        }
+    </style>
+</head>
+<body >
+    <header>
+        <h1>Parchi naturali</h1>
+        <p>I parchhi naturali più belli del mondo</p>
+    </header>
+    <nav>
+        <a href="#">Gran Paradiso</a>
+        <a href="#">Yellow stone</a>
+        <a href="#">Uluru-Kata Tjuta</a>
+    </nav>
+    <aside>
+        questo sito parla genericamente di parchi
+    </aside>
+    <section>
+        <p>Ci drovebbero essere scritte molte cose interessanti almeno a giudicare dai nomi dei parchi!</p>
+        <p>Ad esempio qualcosa sulla conservazione della natura</p>
+        <p>Sarebbe interessante trovare qui anche informazioni turistiche</p>
+    </section>
+    <article>
+        <p>Questo sito come esercizio può andare</p>
+    </article>
+</body>
+</html>
