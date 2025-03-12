@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Summits</title>
+    <style>
+        body{
+            display: grid;
+            grid-template-columns: 10em auto 10em;
+            grid-template-rows: auto auto auto auto;
+            grid-template-areas: 
+            "header header header"
+            "asideSinistra nav asideDestra"
+            "asideSinistra article asideDestra"
+            "footer footer footer";
+            margin: 0;
+        }
+        header{
+            grid-area: header;
+            background-color: lightblue;
+            border-bottom: 2px solid blue;
+        }
+        nav{
+            grid-area: nav;
+            background-color: blue;
+            padding: 1em;
+        }
+        nav a{
+            color: white;
+            padding: 1em;
+        }
+        #asideDestra{
+            grid-area: asideDestra;
+            background-color: lightblue;
+        }
+        #asideSinistra{
+            grid-area: asideSinistra;
+            background-color: lightblue;
+        }
+        article{
+            grid-area: article;
+        }
+        footer{
+            grid-area: footer;
+            background-color: black;
+        }
+        footer p{
+            color: white;
+        }
+        footer a{
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Seven Summits</h1>
+        <p>le montagne più alte!</p>
+    </header>
+    <nav>
+        <a href="https://it.wikipedia.org/wiki/Kilimangiaro">Kilimangiaro</a>
+        <a href="https://it.wikipedia.org/wiki/Monte_McKinley">Denali</a>
+        <a href="https://it.wikipedia.org/wiki/Aconcagua">Aconcagua</a>
+        <a href="https://it.wikipedia.org/wiki/Monte_Vinson">Monte Vinson</a>
+        <a href="https://it.wikipedia.org/wiki/Everest">Everest</a>
+        <a href="https://it.wikipedia.org/wiki/Monte_Bianco">Monte Bianco</a>
+        <a href="https://it.wikipedia.org/wiki/Puncak_Jaya">Puncak Jaya</a>
+    </nav>
+    <aside id="asideSinistra">
+        <p>
+            Con la locuzione inglese
+            Seven Summits ('sevon
+            samits), o con quella
+            italiana Sette vette, sono indicate le montagne più alte per ciascuno dei sette continenti della Terra. Si
+            considera a tal fine
+            l'America divisa in due
+            continenti, secondo l'uso dei paesi di cultura inglese, cinese e russa; secondo
+            l'uso italiano, dell'Europa
+            occidentale e dell'America
+            latina, invece, l'America è
+            un unico continente e
+            dunque le vette più alte di ciascun continente
+            sarebbero sei, escludendo il
+            Denali, in America del
+            Nord, più basso dell'Aconcagua, in America
+            del Sud.
+        </p>
+    </aside>
+    <aside id="asideDestra">
+        <p>
+            Nel 1986 Reinhold Messner
+            propose un altro elenco
+            (detto "lista Messner")
+            sostituendo monte
+            Kosciuszko con il Puncak
+            Jaya, (4.884 m). Dal punto di vista dell'alpinismo, la
+            lista Messner è più
+            impegnativa, in quanto la
+            scalata del Puncak Jaya ha
+            il carattere di una
+            spedizione alpinistica,
+            mentre l'ascesa del
+            Kosciuszko è una facile escursione non alpinistica.
+        </p>
+    </aside>
+    <article>
+        <h2>Controversie</h2>
+        <h3>Europa</h3>
+        <p>Secondo il criterio seguito in molti paesi, compresa l'Italia, la cima più alta del continente è il Monte Bianco, in quanto i territori del Caucaso, dove sorgono monti più alti, non vengono considerati parte dell'Europa.</p>
+        <p>Nel caso in cui invece i territori caucasici siano considerati europei, ossia secondo il criterio seguito da molti testi anglosassoni, il monte europeo più alto risulterebbe essere l'Elbrus.</p>
+        <h3>Oceania</h3>
+        <p>Il monte più alto dell'Oceania è il Puncak Jaya (4.884 m), in Occidente chiamato spesso Monte Carsztens, situato nell'isola di Nuova Guinea, su un territorio appartenente politicamente all'Indonesia, che è un paese transcontinentale situato tra Asia ed Oceania. L'Oceania è l'unico continente ad avere la vetta più alta posta su un'isola e non sulla</p>
+        <p>Il fatto che il Puncak Jaya sorga su un'isola è ininfluente dal punto di vista geografico, ma non tutti gli alpinisti seguono il criterio geografico puro. Alcuni scalatori, infatti, al fine di stilare la propria lista delle Sette Vette, prendono in considerazione solo quelle poste sulla terraferma continentale. Secondo questo modo di vedere, la più alta vetta dell'Oceania sarebbe il Monte Kosciuszko (2.228 metri), che essendo situato in Australia, sorge sulla terraferma. Si noti che, per giungere sulla cima del Kosciuszko, è sufficiente una semplice escursione alpinistica e non una vera scalata.</p>
+        <p>Dal punto di vista alpinistico, sono queste due montagne a concorrere per far parte della lista delle Sette Vette.</p>
+        <p>Secondo alcuni punti di vista minoritari, dovrebbe invece prevalere un punto di vista legato ai confini politici; il titolo di vetta oceaniana più alta spetterebbe in questo modo al Monte Wilhelm, in Papua Nuova Guinea, (4.509 metri), che appartiene a una nazione il cui territorio ricade interamente in Oceania; il Puncak Jaya verrebbe scartato perché sorge in territorio</p>
+        <p>Se si calcolassero le altezze delle montagne a partire dal fondale marino circostante, e non dal livello del mare come vuole la convenzione internazionalmente adottata, il monte più alto dell'Oceania sarebbe il vulcano hawaiano Mauna Kea (4.205 m), dato che la sua base si trova a 5.761 m sotto il livello del mare e quindi si erge dal fondale marino per un totale di 9.966 m. Seguendo questo criterio, tale monte sarebbe anche il più alto di tutta la Terra, mentre è normalmente considerato solamente il più alto delle isole Hawaii.</p>
+        <h3>America</h3>
+        <p>Nella letteratura geografica italiana e di altri paesi, ed anche secondo il criterio seguito dalle Nazioni Unite nel Geoschema, l'America è considerata un unico continente, costituito da una parte settentrionale (America del Nord), da una centrale (America Centrale) e da una meridionale (America del Sud); secondo questo modo di vedere, quindi, i continenti sono sei e sono sei le vette più alte di ciascuno di essi. Considerando l'America un unico continente e quindi contando sei continenti e non sette, il Denali (il più alto dell'America del Nord) non comparirebbe nell'elenco delle Sette Vette, dato che l'Aconcagua (in America del Sud) lo supera in</p>
+        <p>Nei paesi di cultura inglese, russa e cinese, invece, l'America è considerato un supercontinente costituito da due continenti: l'America del Nord (che comprende anche l'America Centrale) e l'America del Sud; secondo questa visione, i continenti sono sette e sette sono le vette più alte di ciascuno di essi. Dato che l'idea di raggiungere le vette più alte di ciascun continente deriva dallo statunitense Richard Bass, che seguiva, naturalmente, il modo di vedere anglosassone, è ormai invalso l'uso, in tutti i paesi, di considerare la scalata delle Sette vette un importante traguardo alpinistico.</p>
+    </article>
+    <footer>
+        <p>
+            <strong>E qualcuno li ha anche scalati tutti! (poi dipende dalle controversie)</strong>
+        </p>
+        <a href="https://it.wikipedia.org/wiki/Richard_Bass">Richard Bass</a>
+        <a href="https://it.wikipedia.org/wiki/Reinhold_Messner">Reinhold Messner</a>
+        <a href="https://it.wikipedia.org/wiki/Junko_Tabei">Junko Tabei</a>
+    </footer>
+</body>
+</html>

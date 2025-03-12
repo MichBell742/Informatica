@@ -8,19 +8,19 @@
         *{
             margin: 0;
         }
-        h1{
-            padding: 0.5em;
+        header{
+            padding: 1em;
         }
         header p{
-            padding: 0em 1em 1em 0.5em;
+            padding: 0;
         }
         p{
-            padding: 1em 0em 1em 0.25em;
+            padding: 1em 0em 1em 1em;
         }
         body{
             display: grid;
-            grid-template-columns: 20% auto;
-            grid-template-rows: 7em 3em auto;
+            grid-template-columns: 22.5% auto;
+            grid-template-rows: auto auto auto auto;
             grid-template-areas: 
             "header header"
             "nav nav"
@@ -31,15 +31,11 @@
         header{
             grid-area: header;
             background-color: red;
-            height: 200px;
         }
         nav{
             grid-area: nav;
             background-color: yellow;
-        }
-        nav p{
-            text-align: center;
-            padding: auto;
+            padding: 1em;
         }
         aside{
             grid-area: aside;
@@ -66,7 +62,7 @@
         <a href="#">Uluru-Kata Tjuta</a>
     </nav>
     <aside>
-        questo sito parla genericamente di parchi
+        <p>questo sito parla genericamente di parchi</p>
     </aside>
     <section>
         <p>Ci drovebbero essere scritte molte cose interessanti almeno a giudicare dai nomi dei parchi!</p>
