@@ -20,6 +20,7 @@
             grid-area: header;
             background-color: lightblue;
             border-bottom: 2px solid blue;
+            text-align: center;
         }
         nav{
             grid-area: nav;
@@ -29,6 +30,13 @@
         nav a{
             color: white;
             padding: 1em;
+        }
+        aside{
+            padding: 1em;
+            font-size: small;
+        }
+        aside p{
+            line-height: 2em;
         }
         #asideDestra{
             grid-area: asideDestra;
@@ -40,13 +48,18 @@
         }
         article{
             grid-area: article;
+            padding: 2em;
         }
         footer{
             grid-area: footer;
             background-color: black;
+            text-align: center;
+            padding: 1em;
         }
         footer p{
             color: white;
+            padding: 0 0 1em 0;
+            margin: 0;
         }
         footer a{
             color: yellow;
