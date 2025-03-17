@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mon</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            display: grid;
+            grid-template-columns: auto 10em;
+            grid-template-rows: auto 2em 1fr;
+            grid-template-areas: 
+            "testa testa"
+            "nav nav"
+            "sezione laterale";
+            margin: 0;
+        }
+        header{
+            grid-area: testa;
+            text-align: right;
+            padding: 2em;
+        }
+        header h1{
+            margin: 0;
+            font-size: 5em;
+            display: inline;
+        }
+        header p{
+            font-size: 0.75em;
+            margin: 0;
+        }
+        header img{
+            float: left;
+        }
+        img{
+            width: 9em;
+        }
+        nav{
+            background-color: red;
+            grid-area: nav;
+        }
+        nav a{
+            display: inline-block;
+            padding: 0.25em 1.5em 0.25em 1.5em;
+            color: white;
+        }
+        section{
+            padding: 1em;
+            grid-area: sezione;
+        }
+        h2{
+            border-bottom: 1px solid grey;
+        }
+        aside{
+            font-size: 0.75em;
+            padding: 0.75em;
+            grid-area: laterale;
+            background-color: rgb(196, 196, 196);
+        }
+        .imgDestra{
+            float: right;
+        }
+        .imgSinistra{
+            float: left;
+        }
+        @media (max-width: 600px) {
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="stemma_imperiale_giapponese.png" alt="stemma imperiale">
+        <h1>日本の国章</h1>
+        <p>(Giappone)</p>
+    </header>
+    <nav>
+        <a href="#">Storia</a>
+        <a href="#">Geografia</a>
+        <a href="#">Mon</a>
+        <a href="#">Arte</a>
+    </nav>
+    <aside>
+        <p>[1] L'araldica è lo studio del blasone, cioè degli stemmi.</p>
+        <p>[2] Il periodo Edo, noto anche come periodo Tokugawa
+            (1603-1868) indica quella
+            fase della storia del Giappone in cui la famiglia Tokugawa
+            detenne attraverso il bakufu il massimo potere politico e
+            militare nel paese.</p>
+        <p>[3] Lo shogunato Tokugawa
+            (1603-1868), conosciuto anche come Tokugawa högun-ke o Edo bakufu f l'ultimo governo feudale del
+            Giappone.</p>
+    </aside>
+    <section>
+        <h2>Mon</h2>
+        <img src="Tokugawa.svg" alt="Tokugawa" class="imgDestra">
+        <p>I mon（紋？），0 monsho（紋章？，mondokoro（紋所？），e kamon（家紋？，sono gli emblemi giapponesi usati per
+            decorare e identificare un individuo o una famiglia, simili agli stemmi dell'araldica[1] europea.</p>
+        <p>Essi vengono utilizzati inizialmente dai clan di samurai per distinguersi e riconoscersi più facilmente sul campo di battaglia. Si tratta generalmente di disegni stilizzati inseriti all'interno di una forma geometrica. Il loro impiego risale al periodo Kamakura. Durante il Periodo Edo, solo i daimyõ avevano il diritto di possederne due. Dall'inizio del periodo
+            Meiji, il loro utilizzo si diffonde anche tra il popolo.</p>
+        
+        <h2>Storia</h2>
+        <img src="Gomaisasa.svg" alt="Tokugawa" class="imgSinistra">
+        <p>I kamon giapponesi - emblemi/stemmi di famiglia - indicavano il lignaggio, la parentela o la posizione sociale di chi li esibiva. Si ritiene siano nati in periodo Nara (710-784) o Heian (794-1185) quando era abitudine applicare esternamente emblemi di famiglia sui carri che trasportavano i nobili. Questi elementi, che si ispiravano ad antichi simboli cinesi, erano altresì utilizzati all'epoca per decorare stoffe e tessuti preziosi delle classe aristocratica, ma non si può parlare ancora ufficialmente di veri e propri stemmi familiari.</p>
+        <p>Sarà invece a partire dal periodo seguente - periodo Kamakura (1185-1333) e Muromachi-Momoyama (1333-1603)
+            - che armature, bandiere e stendardi militari verranno decorati con kamon sia con lo scopo funzionale di riconoscere alleati e nemici sui campi di battaglia durante gli scontri, ma anche come segno di servizio distintivo. Spesso paragonati ai blasoni della cavalleria europea, in realtà ne differivano molto, dal momento che non avevano il valore di stemmi gentilizi, anche perché nell'antico Giappone - salvo rare eccezioni - non esistevano propriamente i cognomi.</p>
+        <p>Fu poi a partire dal XVII secolo - periodo Edo[2] (1603-1868) - che i kamon assunsero gradualmente una funzione più decorativa, a detrimento della loro funzione di simbolo autoritario.</p>
+
+        <h2>simboli</h2>
+        <img src="Sumikiri.svg" alt="Sumikiri" class="imgDestra">
+        <p>Il mon sarebbero nati come modelli cuciti sugli abiti o per distinguere una leadership in uno specifico clan od organizzazione. Dal XII secolo, fonti danno una chiara indicazione di come furono adottati come distintivi, soprattutto in battaglia. Si trovavano anche su bandiere ed equipaggiamenti.</p>
+        <p>Le regole che stabilivano la scelta del mon erano alquanto limitate, sebbene la sua selezione fosse generalmente determinata da norme sociali. Era considerato inappropriato usare un mon che veniva già utilizzato da qualcun altro, e soprattutto offensivo usare un mon già in uso da persone di alto rango. Quando dei mon entravano in conflitto, le persone di rango inferiore spesso cambiavano il proprio per evitare di provocare l'ira degli appartenenti ai ceti più alti. I mon dei clan più prestigiosi del Giappone, come la malvarosa dei Tokugawa[3] e il crisantemo dell'Imperatore godevano di protezione legale contro l'uso improprio. Occasionalmente, i capi dei clan concedevano l'uso del loro mon ai propri vassalli in segno di ricompensa. Analogamente alla concessione del cognome del signore, era considerato un grande onore.</p>
+
+    </section>
+</body>
+</html>
