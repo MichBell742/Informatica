@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image</title>
+    <style>
+        *{
+            transition: all 500ms;
+        }
+        img{
+            width: 40%;
+            margin: 4.25%;
+            border-radius: 25px;
+        }
+        #sfoca:hover{
+            filter: blur(5px);
+        }
+        #bianco-nero:hover{
+            filter: grayscale(1);
+        }
+    </style>
+</head>
+<body>
+    <img src="fiore.jpeg" alt="fiore" id="sfoca">
+    <img src="nuvole.jpeg" alt="nuvole" id="bianco-nero">
+</body>
+</html>
