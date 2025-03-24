@@ -78,6 +78,9 @@ tr:nth-child(odd){
 tr:hover{
     background-color: rgba(0, 0, 0, 0.075);
 }
+tr:nth-child(odd):hover{
+    background-color: rgba(255, 205, 148, 0.700);
+}
 div.album{
     text-align: center;
 }

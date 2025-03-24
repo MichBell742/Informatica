@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>monumenti italiani</title>
+    <style>
+        *{
+            box-sizing: border-box; /*tutto rientra nel conteggio dello spazio*/
+        }
+        body{
+            display: grid;
+            border: 2px solid black;
+            grid-template-columns: 1fr 1fr 1fr;
+            font-family: Arial, Helvetica, sans-serif;
+            grid-template-areas: 
+            "header header header"
+            "colosseo duomo pisa"
+            "verona duomo pantheon";
+        }
+        header{
+            grid-area: header;
+            color: white;
+            background-color: blue;
+            grid-column: 1/4;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        img{
+            width: 100%;
+            border-radius: 15px;
+        }
+        section{
+            padding: 0.75em;
+            border: 1px solid black;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            margin: 0.5em;
+        }
+        section:nth-child(2){
+            grid-area: colosseo;
+            background-color: red;
+        }
+        section:nth-child(3){
+            margin: 0.5 0 0.5 0;
+            grid-area: duomo;
+            background-color: rgb(108, 155, 255);
+        }
+        section:nth-child(4){
+            grid-area: pisa;
+            background-color: yellowgreen;
+        }
+        section:nth-child(5){
+            grid-area: verona;
+            background-color: purple;
+        }
+        section:nth-child(6){
+            grid-area: pantheon;
+            background-color: orange;
+        }
+        @media (max-width: 1000px){
+            body{
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas: 
+                "header header"
+                "colosseo colosseo"
+                "duomo pisa"
+                "duomo pantheon"
+                "verona verona";
+            }
+        }
+        @media (max-width: 600px){
+            body{
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                "header"
+                "colosseo"
+                "duomo"
+                "pisa"
+                "pantheon"
+                "verona";
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Monumenti Italini</h1>
+    </header>
+    <section>
+        <img src="colosseo.jpg" alt="colosseo">
+        <h2>Colosseo</h2>
+        <p>Il Colosseo, conosciuto anche come Anfiteatro Flavio, è il più grande anfiteatro del mondo antico. Costruito sotto l'imperatore Vespasiano nel I secolo d.C., ospitava spettacoli di gladiatori, cacce con animali esotici e persino battaglie navali simulate.</p>
+    </section>
+    <section>
+        <img src="duomo.jpg" alt="duomo">
+        <h2>Duomo</h2>
+        <p>Il Duomo di Milano è una delle cattedrali gotiche più imponenti d'Europa. La sua costruzione iniziò nel 1386 e durò quasi sei secoli. Celebre per la sua facciata riccamente decorata e le oltre 3.400 statue, è un'icona della città lombarda.</p>
+    </section>
+    <section>
+        <img src="pisa.jpg" alt="pisa">
+        <h2>Torre di pisa</h2>
+        <p>La Torre di Pisa, famosa per la sua inclinazione, è il campanile della cattedrale di Santa Maria Assunta.
+            Costruita tra il XII e il XIV secolo, ha un'altezza di circa 56 metri e pende di circa 4 gradi a causa del cedimento del terreno.</p>
+    </section>
+    <section>
+        <img src="arena.jpg" alt="arena">
+        <h2>Arena di Verona</h2>
+        <p>L'Arena di Verona è un anfiteatro romano costruito nel l secolo d.C. Ancora oggi è utilizzato per spettacoli e concerti. Con una capienza originaria di oltre 30.000 spettatori, è uno dei meglio conservati al mondo.</p>
+    </section>
+    <section>
+        <img src="pantheon.jpg" alt="pantheon">
+        <h2>Pantheon</h2>
+        <p>Il Pantheon è uno degli edifici dell'antica Roma meglio conservati. Costruito originariamente nel 27 a.C. e ricostruito sotto l'imperatore Adriano, è famoso per la sua cupola perfettamente emisferica e il suo grande
+            oculo di 9 metri.</p>
+    </section>
+</body>
+</html>
