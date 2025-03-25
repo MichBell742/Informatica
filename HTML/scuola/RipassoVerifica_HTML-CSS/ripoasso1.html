@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: Helvetica, sans-serif;
+        }
+        body{
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            grid-template-rows: 12em auto 6em;
+            grid-template-areas:
+            "header header"
+            "aside article"
+            "footer footer";
+            min-height: 100vh;
+        }
+        header{
+            grid-area: header;
+            background-color: black;
+            color: white;
+            font: bold;
+        }
+        header h1:hover{
+            color: red;
+        }
+        header h1{
+            float: left;
+            padding: 2.5em 0 0 1em;
+            margin: 0;
+        }
+        img{
+            border-radius: 1em;
+        }
+        header img{
+            border: 2px solid red;
+            height: 10em;
+            float: right;
+            margin: 1em;
+        }
+        aside{
+            grid-area: aside;
+            border-right: 1px solid black;
+            padding: 2em;
+            border-radius: 5em;
+        }
+        aside p{
+            color: black;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        aside a, ul, li{
+            color: black;
+            padding: 0.5em;
+        }
+        article{
+            display: inline;
+            padding: 1em;
+        }
+        article img{
+            padding: 1em;
+            border-radius:  3em;
+            float: right;
+
+        }
+        table, td, th{
+            padding: 0.5em;
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        table{
+            width: 90%;
+            margin: 0 5% 1em 5%;
+        }
+        footer{
+            grid-area: footer;
+            background-color: black;
+            color: white;
+            text-align: center; 
+        }
+        @media (max-width: 1000px){
+            body{
+                margin: 0;
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 12em auto ;
+                grid-template-areas:
+                "header"
+                "aside"
+                "article"
+                "footer";
+            }
+            aside{
+                border-radius: 0;
+                border: none;
+                text-align: center;
+                padding: 2em 0 0 0;
+            }
+            aside a, ul, li{
+                display: inline-block;
+                text-decoration: none;
+                margin: 0;
+            }
+            aside a:hover{
+                color: royalblue;
+            }
+        }    
+    </style>
+</head>
+<body>
+    <header>
+        <h1>burger!!</h1><img src="burger.jpeg" alt="burger">
+    </header>
+    <aside>
+        <p>Menù</p>
+        <ul>
+            <li><a href="#">chi siamo</a></li>
+            <li><a href="#">il nostro cibo</a></li>
+            <li><a href="#">dove trovarci</a></li>
+        </ul>
+    </aside>
+    <article>
+        <h3>
+            Burger Radius, la panineria preferita dai bambini.
+        </h3>
+        <img src="burger.jpeg" alt="burger">
+        <p>Benvenuti a Burger Radius, dove il gusto incontra la qualità! I nostri hamburger sono preparati con ingredienti freschi e selezionati, garantendo un'esperienza culinaria unica. Offriamo una varietà di opzioni per soddisfare ogni palato, dai classici ai più innovativi. I nostri prezzi sono competitivi, rendendo ogni morso ancora più piacevole. Siamo orgogliosi di essere la scelta preferita delle famiglie, con un'attenzione speciale ai più piccoli. Venite a trovarci per scoprire il sapore autentico dei nostri piatti e lasciatevi conquistare dalla nostra passione per il cibo. Burger Radius, il luogo dove ogni pasto diventa un ricordo speciale!</p>
+        <p>La nostra missione è offrire un'esperienza gastronomica che unisca tradizione e innovazione. Ogni hamburger è preparato con cura, utilizzando solo ingredienti di alta qualità. Il nostro team lavora instancabilmente per creare combinazioni di sapori che sorprendano e delizino i nostri clienti. Che siate amanti dei sapori classici o alla ricerca di qualcosa di nuovo, troverete sempre qualcosa di speciale nel nostro menù. Inoltre, ci impegniamo a fornire un servizio eccellente, assicurandoci che ogni visita sia memorabile. Non vediamo l'ora di accogliervi e condividere con voi la nostra passione per il cibo. Burger Radius è più di una semplice panineria: è un luogo dove la qualità e il gusto si incontrano per creare momenti indimenticabili. Unitevi a noi e scoprite perché siamo la scelta preferita di tanti amanti del buon cibo!</p>
+        <table>
+            <tr>
+                <th>nome</th>
+                <th>prezzo</th>
+                <th>ingredienti</th>
+                <th>gradimento</th>
+            </tr>   
+            <tr>
+                <th>burger</th>
+                <td>&Eacute;5€</td>
+                <td>pane, carne, formaggio, insalata, pomodoro</td>
+                <td>5/5</td>
+            </tr>   
+            <tr>
+                <th>mega boom</th>
+                <td>&lt;65€</td>
+                <td>pane, mandrillo, Romina Ciribilli, king westMecon, the rock, pisello Daniele Fiorucci</td>
+                <td>87/5</td>
+            </tr>
+        </table>
+    </article>
+    <footer>
+        <p>chiamaci al:3453352826</p>
+    </footer>
+</body>
+</html>
