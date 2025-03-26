@@ -4,10 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mondiali 2026</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            display: grid;
+            min-height: 100vh;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 6em auto 1fr 1fr auto;
+            margin: 0;
+            background-color: rgb(238, 238, 238);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+            grid-column: 1/4;
+            background-color: rgb(116, 116, 116);
+        }
+        header img{
+            padding: 0.5em;
+            height: 6em;
+            border-radius: 2em;
+        }
+        header img:nth-child(1){
+            transition: all 0.25s;
+            margin: 0 0 0 5%;
+            float: left;
+        }
+        header img:nth-child(2){
+            margin: 0 5% 0 0;
+            float: right;
+        }
+        h1{
+            text-align: center;
+            margin: 1.8rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+        nav{
+            grid-column: 1/4;
+            text-align: center;
+            background-color: rgb(175, 175, 175);
+        }
+        nav a{
+            width: 20%;
+            display: inline-block;
+            text-align: center;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding: 0.75em 2em;
+        }
+        nav a:hover{
+            background-color: salmon;
+        }
+        table{
+            grid-column: 2/4;
+            margin: 1em;
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        th, td{
+            width: 25%;
+            border: 2px solid black;
+            padding: 0.5em;
+        }
+        th{
+            font-size: larger;
+        }
+        tr:nth-child(even){
+            background-color: rgb(207, 207, 207);
+        }
+        tr:hover{
+            background-color: rgb(255, 255, 255);
+        }
+        #artLungo{
+            grid-column: 1/3;
+            grid-row: 4/5;
+            text-align: right;
+        }
+        #artLungo img{
+            float: left;
+            margin: 0;
+            width: 75%;
+        }
+        article{
+            margin: 1em;
+            padding: 1em;
+            border: 1px solid black;
+            border-radius: 15px;
+        }
+        article h2{
+            margin: 0;
+            width: 50%;
+            text-align: center;
+        }
+        article img{
+            width: 80%;
+            margin: 0 10%;
+            border-radius: 2em;
+            padding: 0.5em;
+        }
+        footer{
+            grid-row: 6/7;
+            grid-column: 1/4;
+            background-color: rgb(116, 116, 116);
+            padding: 2em 2em 0 2em;
+            text-align: center;
+            font-size: small;
+            color: white;
+            font-family:monospace;
+        }
+        @media (max-width: 1000px){
+            body {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 6em auto 1fr 1fr 1fr auto;
+                background-color: rgb(238, 238, 238);
+            }
+            table{
+                grid-row: 5/6;
+                grid-column: 1/4;
+            }
+            #artLungo{
+                grid-column: 1/4;
+            }
+        }
+        @media (max-width: 700px){
+            nav a{
+                width: 100%;
+                text-align: center;
+                display: block;
+                margin: auto;
+            }
+        }
+        @media (max-width: 550px){
+            header img:nth-child(1){
+                transition: all 0.25s;
+                margin: 0 0 0 2%;
+            }
+            header img:nth-child(2){
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="" alt="">
+        <img src="mondiali.png" alt="coppa mondiali">
+        <img src="mondiali.png" alt="coppa mondiali">
+        <h1>mondiali&nbsp;2026</h1>
     </header>
+    <nav>
+        <a href="#">squadre</a>
+        <a href="#">info</a>
+        <a href="#">giocatori</a>
+        <a href="#">moodiiiis</a>
+    </nav>
+    <article>
+        <h2>ciccino</h2>
+        <p>il ciccino sono tutte quelle persone che si chiamano michele e sono fratelli di Nicola.</p>
+        <img src="ciccino.jpg" alt="il ciccino">
+    </article>
+    <table>
+        <tr>
+            <th>nome</th>
+            <th>ruolo</th>
+            <th>testa</th>
+            <th>lunghezza</th>
+        </tr>
+        <tr>
+            <th>Anton</th>
+            <td>DF</td>
+            <td>rotonda</td>
+            <td>&gt;180mm</td>
+        </tr>
+        <tr>
+            <th>Franco</th>
+            <td>D90</td>
+            <td>Longa</td>
+            <td>&lt;175km</td>
+        </tr>
+    </table>
+    <article>
+        <h2>Brulli</h2>
+        <p>I brulli sono i calciatori con i piedi storti che invece di tirare in porta regalano i palloni ai tennisti sul campo a fianco</p>
+        <img src="calciatore.jpeg" alt="brullo">
+    </article>
+    <article id="artLungo">
+        <h2>Italia</h2>
+        <img src="italia.png" alt="italia">
+        <p>La peggiore nazione in tutto il mondo è l'italia cona la lttera minuscola indica uno svantaggio pirlone di un sasso rotondo e ovale contemporaneamente al brulli</p>
+    </article>
+    <footer>
+        <p>
+            <strong>qualsiasi riferimento a persone esistenti o a fatti realmente accaduti è puramente casuale e non vi è alcuno scopo offensivo nei confronti di nessuno.</strong>
+        </p>
+    </footer>
 </body>
 </html>
