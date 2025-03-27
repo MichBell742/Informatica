@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            display: grid;
+            grid-template-columns: auto 1fr 1fr;
+            grid-template-rows: auto;
+            grid-template-areas: 
+            "img header header"
+            "nav section section"
+            "nav articleSinistra articleDestra";
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+        img{
+            width: 7em;
+            grid-area: img;
+            padding: 1em;
+            background-color: yellow;
+        }
+        header{
+            grid-area: header;
+            background-color: orange;
+        }
+        header h1{
+            font-family: serif;
+            text-align: center;
+            margin: 0.25em;
+        }
+        nav{
+            padding: 1em 0 0 0;
+            grid-area: nav;
+            background-color: orange;
+        }
+        nav a{
+            transition: border 500ms;
+            display: block;
+            margin: 2em 1em;
+            padding-left: 2px;
+            border-left: 3px solid yellow;
+        }
+        nav a:hover{
+            border-left: 1em solid yellow;
+        }
+        section{
+            grid-area: section;
+            color: white;
+            background-color: black;
+            padding: 1em;
+        }
+        article:nth-child(1){
+            grid-area: articleSinistra;
+        }
+        article:nth-child(2){
+            grid-area: articleDestra;
+
+        }
+        article{
+            margin: 1em;
+        }
+        article h3{
+            border-bottom: 2px dotted orange;
+        }
+        .impGatto{
+            color: cornflowerblue;
+            font-weight: bold;
+            font-style: italic;
+            padding: 0;
+        }
+        .impCane{
+            color: green;
+            font-weight: bold;
+            font-style: italic;
+            padding: 0;
+        }
+        table,th,td{
+            border: 1px solid grey;
+            border-collapse: collapse;
+        }
+        th{
+            color: white;
+            background-color: rgb(89, 89, 89);
+        }
+        table *{
+            padding: 0.5em;
+        }
+        td{
+            transition: all 250ms;
+        }
+        td:hover{
+            color: yellow;
+            background-color: rgb(89, 89, 89);
+        }
+        @media (max-width: 800px){
+            body{
+                grid-template-columns: auto 1fr;
+                grid-template-areas: 
+                    "img header"
+                    "nav section"
+                    "nav articleSinistra"
+                    "nav articleDestra";
+            }
+            .descrizione{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="iis.png" alt="logo iis">
+    <header>
+        <h1>Verifica di Informatica</h1>
+    </header>
+    <nav>
+        <a href="www.iisgubbio.edu.it">link uno</a>
+        <a href="www.google.com">link due</a>
+        <a href="www.w3schools.com">link tre</a>
+    </nav>
+    <section>
+        <p>
+            Questo è un utilissimo confronto tra cani e gatti
+        </p>
+        <p>
+            Ovviamente l'autore non è affatto di parte
+        </p>
+    </section>
+    <article>
+        <h2>Gatti</h2>
+        <h3>Dati</h3>
+        <table>
+            <tr>
+                <th></th>
+                <th>taglia</th>
+                <th>origine</th>
+            </tr>
+            <tr>
+                <th>Norvegese delle <span class="impGatto">foreste</span></th>
+                <td>grande</td>
+                <td>norvegia</td>
+            </tr>
+            <tr>
+                <th>siamese</th>
+                <td>media</td>
+                <td>thailandia</td>
+            </tr>
+            <tr>
+                <th>persiano</th>
+                <td colspan="2">vai a sapere</td>
+            </tr>
+        </table>
+        <h3>In sintesi</h3>
+        <p>Cosa fa il <span class="impGatto">gatto</span> medio in casa?</p>
+        <ul>
+            <li>mangia</li>
+            <li>dorme</li>
+        </ul>
+        <div class="descrizione">
+            <h3>Descrizione</h3>
+            <p>Questa frase è qui soltanto come riempimento, non ha un senso partcolare.</p>
+            <p>Questa frase è qui soltanto come riempimento, non ha un senso partcolare.</p>
+        </div>
+    </article>
+    <article>
+        <h2>Cani</h2>
+        <h3>Dati</h3>
+        <table>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>taglia</th>
+                    <th>gruppo</th>
+                </tr>
+                <tr>
+                    <th>Siberian husky</th>
+                    <td rowspan="2">media</td>
+                    <td>spitz e primitivo</td>
+                </tr>
+                <tr>
+                    <th>Australian shepherd</th>
+                    <td>pastori e bovari</td>
+                </tr>
+                <tr>
+                    <th>Dobermann</th>
+                    <td>grande</td>
+                    <td>pinscher e schnauzer...</td>
+                </tr>
+            </table>
+        </table>
+        <h3>In sintesi</h3>
+        <p>Cosa fa il cane medio <span class="impCane">fuori</span> casa?</p>
+        <ol>
+            <li>controlla gli animali del vicinato</li>
+            <li><span class="impCane">scava</span> buche</li>
+        </ol>
+        <div class="descrizione">
+            <h3 >Descrizione</h3>
+            <p>Questa frase è qui soltanto come riempimento, non ha un senso partcolare.</p>
+            <p>Questa frase è qui soltanto come riempimento, non ha un senso partcolare.</p>
+        </div>
+        
+    </article>
+</body>
+</html>

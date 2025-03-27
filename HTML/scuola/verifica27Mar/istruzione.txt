@@ -1,0 +1,7 @@
+ISTRUZIONI 
+- il testo (è poco) va scritto a mano 
+- consegnare SOLTANTO il file html 
+- usare meno classi e id possibile 
+- parte responsive (da fare alla fine) 
+- il sito cambia disposizione sotto gli 800px 
+- attenzione che una parte sparisce
