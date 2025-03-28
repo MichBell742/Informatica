@@ -1,3 +1,8 @@
+<!--
+Erano presenti 4 errori, il più grave è il mancato funzionamento dei link causto dalla mancata dichiarazione del protocollo https://, 
+un secondo cioè la dimensione del titolo h1 non è stata adattata, e di conseguenza anche l'immagine non è stata adeguatamente adattata con il div,
+ultimo errore nonche il più stupido lo spazio tra i due paragrafi della descrizione dei cani non è stato aggiunto. 
+-->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -19,8 +24,7 @@
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
         }
-        img{
-            width: 7em;
+        #titleImg{
             grid-area: img;
             padding: 1em;
             background-color: yellow;
@@ -31,6 +35,7 @@
         }
         header h1{
             font-family: serif;
+            font-size: 3em;
             text-align: center;
             margin: 0.25em;
         }
@@ -98,6 +103,9 @@
             color: yellow;
             background-color: rgb(89, 89, 89);
         }
+        .bottomPadding{
+            padding-bottom: 1em;
+        }
         @media (max-width: 800px){
             body{
                 grid-template-columns: auto 1fr;
@@ -114,14 +122,15 @@
     </style>
 </head>
 <body>
-    <img src="iis.png" alt="logo iis">
+
+    <div id="titleImg"><img src="iis.png" alt="logo iis"></div>
     <header>
         <h1>Verifica di Informatica</h1>
     </header>
     <nav>
-        <a href="www.iisgubbio.edu.it">link uno</a>
-        <a href="www.google.com">link due</a>
-        <a href="www.w3schools.com">link tre</a>
+        <a href="https://www.iisgubbio.edu.it">link uno</a>
+        <a href="https://www.google.com">link due</a>
+        <a href="https://www.w3schools.com">link tre</a>
     </nav>
     <section>
         <p>
@@ -201,7 +210,7 @@
         </ol>
         <div class="descrizione">
             <h3 >Descrizione</h3>
-            <p>Questa frase è qui soltanto come riempimento, non ha un senso partcolare.</p>
+            <p class="bottomPadding">Questa frase è qui soltanto come riempimento, non ha un senso partcolare.</p>
             <p>Questa frase è qui soltanto come riempimento, non ha un senso partcolare.</p>
         </div>
         
