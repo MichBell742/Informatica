@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabelline</title>
+    <script>
+        "use strict";
+        let paginaWeb="";
+        for(let numero=1; numero<=10; numero++){
+            paginaWeb+="<table><tr><th colspan="+2+">tabellina&nbsp;del&nbsp;"+numero+"</th></tr>";
+            for(let i=1; i<=10; i++){
+                console.log(numero*i);
+                paginaWeb+=`<tr><th>${i}*${numero}</th><td>${numero*i}</td></tr>`
+            }
+            paginaWeb+="</table>"
+        }
+        document.write(paginaWeb);
+    </script>
+    <style>
+        table,th,td{
+            border: 2px solid orange;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th,td{
+            width: 4em;
+        }
+        tr:nth-child(odd){
+            background-color: rgba(255, 166, 0, 0.216);
+        }
+        table{
+            display: inline-block;
+            margin: 0.5em;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
