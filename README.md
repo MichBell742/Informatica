@@ -1,3 +1,3 @@
-#Esercizi di Informatica
+# Esercizi di Informatica
 
-###so che java e javascript sono parenti molto lontani :)
+### so che java e javascript sono parenti molto lontani :)
