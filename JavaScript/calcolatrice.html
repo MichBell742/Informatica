@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calcolatrice</title>
+    <script>
+        "use strict"
+        let calcolatrice={
+            cifre: 8,
+            somma: function(n1,n2=0){
+                return n1+n2;
+            },
+            sottrazione: function(n1,n2=0){
+                return n1-n2;
+            },
+            divisione: function(n1,n2=1){
+                return n1/n2;
+            },
+            moltiplicazione: function(n1,n2=1){
+                return n1*n2;
+            },
+            nomePropietario: "nome",
+        }
+        console.log(calcolatrice.cifre);
+        console.log(calcolatrice.moltiplicazione(4,10));
+        calcolatrice.opposto=function(n1){
+            return -n1;
+        };
+        console.log(calcolatrice.opposto(123));
+        console.log(calcolatrice.opposto(-123));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
