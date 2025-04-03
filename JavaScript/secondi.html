@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secondi</title>
+    <script>
+        "use strict";
+        function oreMinutiSecondi(sec){
+            let s, m, o;
+
+            m = Math.floor(sec/60);
+            s = sec % 60;
+            
+            o = Math.floor(m/60);
+            m = m % 60;
+
+            return {ore:o, minuti:m, secondi:s};
+        }
+        let tempo1=oreMinutiSecondi(65);
+        let tempo2=oreMinutiSecondi(40065);
+        console.log(`tempo1: h=${tempo1.ore}, min=${tempo1.minuti}, sec=${tempo1.secondi};\ntempo2: h=${tempo2.ore}, min=${tempo2.minuti}, sec=${tempo2.secondi};`);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

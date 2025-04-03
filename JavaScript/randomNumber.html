@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>numeri</title>
+    <script>
+        "use strict";
+        let numeri=new Array();
+        let pagina="<p>";
+        for(let i=0; i<10; i++){
+            numeri.push(Math.round(Math.random()*1000));
+            pagina+=numeri[i];
+            i!=9 ? pagina+="</p><p>" : pagina+="</p>";
+        }
+        document.write(pagina);
+        document.write("controlla la console");
+        let minimo=numeri[0]
+        for(let i=1;i<numeri.length;i++){
+            if(numeri[i]<minimo){
+                minimo=numeri[i];
+            }
+        }
+        console.log("il numero più piccolo è "+minimo);
+        function media(vettore){
+            let somma=0;
+            for(let i=1;i<vettore.length;i++){
+                somma+=vettore[i];
+            }
+            return somma/vettore.length;
+        }
+        console.log("la media è "+media(numeri));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

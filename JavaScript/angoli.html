@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        "use strict";
+        let angolo1={gradi:80, primi:30, secondi:23}
+        let angolo2={gradi:25, primi:31, secondi:4}
+        function gradiInRadianti(angolo){
+            let sessadecimali = angolo.gradi+angolo.primi/60+angolo.secondi/3600;
+            let radianti = sessadecimali * Math.PI /180;
+            return radianti;
+        }
+        alert(`radiandti angolo1: ${gradiInRadianti(angolo1)}\nradiandti angolo2: ${gradiInRadianti(angolo2)}`);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

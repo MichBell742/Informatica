@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rett</title>
+    <script>
+        "use strict";
+        class Rectangle{
+            constructor(lMag,lMin){
+                this.latoMag=lMag;
+                this.latoMin=lMin;
+            }
+            area(){
+                return this.latoMag*this.latoMin;
+            }
+            perimetro(){
+                return (this.latoMag+this.latoMin)*2
+            }
+        }
+        let rett=new Rectangle(10,5);
+        console.log("area: "+rett.area());
+        console.log("perimetro: "+rett.perimetro());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
