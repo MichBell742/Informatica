@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +7,23 @@
     <script>
         "use strict";
         class Rectangle{
-            constructor(lMag,lMin){
-                this.latoMag=lMag;
-                this.latoMin=lMin;
+            constructor(base,altezza){
+                this.base=base;
+                this.altezza=altezza;
             }
             area(){
-                return this.latoMag*this.latoMin;
+                return this.base*this.altezza;
             }
             perimetro(){
-                return (this.latoMag+this.latoMin)*2
+                return (this.base+this.altezza)*2;
             }
         }
         let rett=new Rectangle(10,5);
+        console.log("base: "+rett.base);
+        console.log("altezza: "+rett.altezza);
         console.log("area: "+rett.area());
         console.log("perimetro: "+rett.perimetro());
     </script>
 </head>
-<body>
-    
-</body>
+<body></body>
 </html>

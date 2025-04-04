@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>triangolo</title>
+    <script>
+        "use strict";
+        class Triangle{
+            constructor(l1, l2, l3){
+                this.lato1=l1;
+                if(l2==undefined){
+                    this.lato2=l1
+                }else{
+                    this.lato2=l2
+                }
+                if(l3==undefined){
+                    this.lato3=l1
+                }else{
+                    this.lato3=l3
+                }
+            }
+            toString(){
+                return `triangolo ${this.lato1} ${this.lato2} ${this.lato3}`;
+            }
+            perimeter(){
+                let perimeter=this.lato1+this.lato2+this.lato3;
+                return perimeter;
+            }
+            isRectangle(){
+                let areaLato1=this.lato1*this.lato1;
+                let areaLato2=this.lato2*this.lato2;
+                let areaLato3=this.lato3*this.lato3;
+                if(areaLato1>areaLato2 && areaLato1>areaLato3){
+                    if((areaLato2+areaLato3)==areaLato1){
+                        return true;
+                    }
+                }else if(areaLato2>areaLato1 && areaLato2>areaLato1){
+                    if((areaLato1+areaLato3)==areaLato2){
+                        return true;
+                    }
+                }else{
+                    if((areaLato1+areaLato2)==areaLato3){
+                        return true;
+                    }
+                }
+            }
+        }
+        let t1=new Triangle(3);
+        console.log(t1.toString());
+        console.log(t1.perimeter());
+        console.log(t1.isRectangle());
+        let t2=new Triangle(5,7);
+        console.log(t2.toString());
+        console.log(t2.perimeter());
+        console.log(t2.isRectangle());
+        let t3=new Triangle(4,5,3);
+        console.log(t3.toString());
+        console.log(t3.perimeter());
+        console.log(t3.isRectangle());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
