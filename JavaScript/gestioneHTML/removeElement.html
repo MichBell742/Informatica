@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aggiungi/rimuovi contenuto</title>
+    <style>
+        *{
+            font-family: serif;
+
+        }
+        button{
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 1em;
+            background-color: orange;
+            border: 2px red solid;
+            border-radius: 10px;
+        }
+        p{
+            background-color: rgb(156, 156, 156);
+            border: 3px green solid;
+            border-radius: 10px;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+<body onload="">
+    <button onclick="aggiungiParag()">aggiungi</button>
+    <button onclick="rimuoviParag()">rimuovi</button>
+    <div>
+        <!--il contenuto è inserito dal js-->
+    </div>
+    <script>
+        "use strict";
+        let parole=["pippo", "resto", "mancia", "luca", "sandro", "ultimo"]
+        function aggiungiParag(){
+            let padre=document.querySelector("div");
+            let elemento=document.createElement("p");
+            elemento.innerText=parole[Math.floor(Math.random()*parole.length)];
+            padre.appendChild(elemento);
+        }
+        function rimuoviParag(){
+            let padre=document.querySelector("div");
+            try {
+                padre.removeChild(padre.lastChild);
+            } catch (error) {
+                alert("aggiungi un elemento alla lista");
+            }
+            
+        }
+    </script>
+</body>
+</html>

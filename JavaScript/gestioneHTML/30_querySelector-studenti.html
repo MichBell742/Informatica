@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+- al click su "principali" gli em dell'header devono diventare arancioni
+- al click su "uno si e uno no" mette lo sfondo grigio ad un paragrafo si e uno no dell'articolo
+- alla pressione di "Tatji" mette la scritta "la lucertola rossa" al posto di "Tatji"
+- ad ogni click su "elimina h2" elimina il primo degli h2
+-->
+<html>
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<style>
+			* { font-family: sans-serif }
+			nav span { 
+				display: inline-block; border: 2px solid orange; background-color: yellow;
+				border-radius: 0.25em; padding: 0.5em;
+			}
+		</style>
+		<script>
+			function evidenziaIntroduzione(){
+				let evidenzia=document.querySelectorAll("header em");
+				for(let i=0;i<evidenzia.length; i++){
+					evidenzia[i].style.color="orange";
+				}
+			}
+			function unoSiUnoNo(){
+				let sfondo=document.querySelectorAll("p");
+				for(let i=0; i<sfondo.length; i+=2){
+					sfondo[i].style.backgroundColor="grey";
+				}
+			}
+			function tatji(){
+				let elementi=document.querySelectorAll("em");
+					console.log(elementi);
+				for(let i=0;i<elementi.length;i++){
+					if(elementi[i].innerText.toLowerCase()==="tatji"){
+						elementi[i].innerText="la lucertola rossa";
+					}
+				}
+			}
+			function eliminaH2() {
+			}
+		</Script>
+	</head>
+	<body>
+		<nav>
+			<span onclick="evidenziaIntroduzione()">introduzione</span>
+			<span onclick="unoSiUnoNo()">uno si e uno no</span>
+			<span onclick="tatji()">Tatji</span>
+			<span onclick="eliminaH2()">elimina h2</span>
+		</nav>
+		<header>
+			<h1>Uluṟu</h1>
+			<p>Uluṟu, chiamato in inglese Ayers Rock, è il più imponente massiccio roccioso
+			dell'<em>outback</em> australiano. </p>
+			<p>Circondato dalla superficie completamente piana del <em>bush</em>, 
+			Uluṟu è visibile da decine di chilometri di distanza ed è celebre per 
+			la sua intensa <em>colorazione rossa</em>, che muta in maniera spettacolare 
+			(dall'ocra, all'oro, al bronzo, al viola) in funzione dell'ora del giorno e 
+			della stagione. 
+			La superficie, che da lontano appare quasi completamente liscia, 
+			rivela avvicinandosi molte sorgenti, pozze, caverne, 
+			peculiari fenomeni erosivi e antichi dipinti.</p>
+			<p>Uluṟu si trova in Australia (Oceania) nel Territorio del Nord, 
+			nel Parco nazionale <em>Uluṟ`client disconnesso (${ragione}), ${clients.length} client rimanenti`u-Kata Tjuta</em>, 450 km a sudovest della 
+			città di <em>Alice Springs</em>. Si tratta di un <em>luogo sacro</em> per gli aborigeni, 
+			formalmente riconsegnato dal governo australiano agli indigeni del luogo nel 1985.</p>
+		</header>
+		<article>
+			<h2>Nome</h2>
+			<p>Uluṟu è il nome aborigeno originale del luogo. 
+			Si pensa derivi dalla parola ulerenye, una parola Arrernte che significa "strano".</p>
+			<h2>Descrizione</h2> 
+			<p>Uluṟu è definito un monolito, ma più precisamente è una parte di una formazione
+			rocciosa monolitica, composta da un enorme blocco di roccia arenaria,
+			molto più grande e in gran parte sotterranea che comprende anche i Kata Tjuta 
+			e il Monte Connor.</p>
+			<p>L'Uluṟu si staglia per circa 350 m rispetto al territorio circostante 
+			e sprofonda nel terreno per circa 7 km; ha un'altitudine di 864 m s.l.m.; 
+			ha una circonferenza di circa 9 km, ed è caratterizzato da una superficie molto dura 
+			e pareti estremamente lisce a strapiombo.</p>
+			<p>Caratteristica notevole del massiccio è il modo in cui esso sembra cambiare colore 
+			nelle diverse ore del giorno e nei diversi mesi dell'anno; alba e tramonto, 
+			in particolare, producono veloci variazioni di colore estremamente spettacolari.</p>
+			<p>Questi effetti di colore sono dovuti a minerali come i feldspati 
+			che riflettono particolarmente la luce rossa. 
+			Il massiccio è costituito in larga parte di ferro e il suo colore rosso 
+			è dovuto all'ossidazione.</p> 
+			<h2>Mitologia aborigena</h2>
+			<p>Secondo il mito, <em>Tatji</em> che abitava nelle pianure, giunse a Uluṟu.</p> 
+			<p>Lanciò il suo kali (boomerang), che si piantò nella roccia. 
+			<em>Tatji</em> scavò la terra alla ricerca del suo kali, lasciando numerosi buchi rotondi 
+			sulla superficie della roccia. 
+			Questa parte della storia è volta a spiegare alcuni insoliti fenomeni di corrosione 
+			sulla superficie di Uluṟu.</p>
+			<p>Non essendo riuscito a trovare il suo kali, <em>Tatji</em> morì in una caverna; 
+			i grossi macigni che vi si trovano oggi sono i resti del suo corpo.</p> 
+		</article>
+	</body>
+</html>

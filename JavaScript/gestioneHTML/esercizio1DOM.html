@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio1DOM</title>
+    <style>
+        .editable{
+            border: 1px solid red;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Eventi e elementi</h1>
+    <h2>Mouse!</h2>
+    <p onmouseover="cambiaColoreIn()" onmouseout="cambiaColoreOut()">Passa qui sopra</p> <!--onmouseover  onmouseout-->
+    <p id="cambiaColoreSoggetto">Questo paragrafo cambia colore</p>
+    <h2>innerHTML</h2>
+
+    <p contenteditable="true" id="par1" class="editable">Questo è il primo paragrafo.</p>
+    <p onclick="scambiaPar()">scambia paragrafi</p> <!--onclick-->
+    <p contenteditable="true" id="par2" class="editable">Questo è il secondo paragrafo.</p>
+    <h2 onclick="contatoreInc()">Contatore di click <span id="variableText">!</span></h2><!--onclick-->
+
+    <h2 onclick="addRandomFace()">ElementI</h2>
+    <p><span onclick="addFace()">Aumenta facce</span> <span onclick="mescolaLista()">Mescola</span></p><!--onclick-->
+    <ul id="lista">
+        <li>Mario</li>
+        <li>Maria</li>
+        <li>Luca</li>
+        <li>Lucia</li>
+    </ul>
+    <script>
+        "use strict";
+        let pChangeColorSoggetto=document.getElementById("cambiaColoreSoggetto");
+        function cambiaColoreIn(){
+            pChangeColorSoggetto.style.backgroundColor="red";
+        }function cambiaColoreOut(){
+            pChangeColorSoggetto.style.backgroundColor="yellow";
+        }
+        let par1=document.getElementById("par1");
+        let par2=document.getElementById("par2");
+        function scambiaPar(){
+            let textUno=par1.innerText;
+            par1.innerText=par2.innerText;
+            par2.innerText=textUno;
+        }
+        let contatore=0;
+        let testoVariabile=document.getElementById("variableText");
+        function contatoreInc(){
+            contatore++;
+            testoVariabile.innerText=contatore;
+        }
+        let elementiLista=document.getElementById("lista").children;
+        let faces=["😃​","😅​","🥳","​🥺","​🩵","​🧡​"];
+        function addRandomFace(){
+            for(const elemento of elementiLista){
+                elemento.innerText += faces[Math.round(Math.random()*5)];
+            }
+        }
+        function addFace(){
+            for(let i=0;i<elementiLista.length;i++){
+                elementiLista[i].innerText += "🥲";
+            }
+        }
+        function mescolaLista(){
+            let elemento1=elementiLista[Math.floor(Math.random()*elementiLista.length)];
+            let elemento2=elementiLista[Math.floor(Math.random()*elementiLista.length)];
+            let content=elemento1.innerText;
+            elemento1.innerText=elemento2.innerText;
+            elemento2.innerText=content;
+        }
+    </script>
+</body>
+</html>
