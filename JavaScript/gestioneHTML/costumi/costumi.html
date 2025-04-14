@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bo</title>
+    <script>
+        "use strict";
+        let nImg=0;
+        let immagini=["Kirby.png","Bulbasaur.png","Mewtwo.webp"];
+        function cambiaimg(){
+            nImg=(nImg+1)%3;
+            document.querySelector("img").src=immagini[nImg];
+            console.log(nImg);
+        }
+    </script>
+    <style>
+        img{
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <img src="Kirby.png" alt="kirby" onclick="cambiaimg()">
+</body>
+</html>

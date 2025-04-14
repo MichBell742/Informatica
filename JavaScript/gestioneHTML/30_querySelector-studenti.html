@@ -17,6 +17,7 @@
 			}
 		</style>
 		<script>
+			"use strict";
 			function evidenziaIntroduzione(){
 				let evidenzia=document.querySelectorAll("header em");
 				for(let i=0;i<evidenzia.length; i++){
@@ -24,14 +25,14 @@
 				}
 			}
 			function unoSiUnoNo(){
-				let sfondo=document.querySelectorAll("p");
+				let sfondo=document.querySelectorAll("article p");
 				for(let i=0; i<sfondo.length; i+=2){
 					sfondo[i].style.backgroundColor="grey";
 				}
 			}
 			function tatji(){
-				let elementi=document.querySelectorAll("em");
-					console.log(elementi);
+				let elementi=document.querySelectorAll("article em");
+				console.log(elementi);
 				for(let i=0;i<elementi.length;i++){
 					if(elementi[i].innerText.toLowerCase()==="tatji"){
 						elementi[i].innerText="la lucertola rossa";
@@ -39,7 +40,16 @@
 				}
 			}
 			function eliminaH2() {
+				let padre = document.querySelector("article");
+				let primoFiglio = document.querySelector("article h2");
+				padre.removeChild(primoFiglio);
 			}
+			/*elimina l'ultimo
+			function eliminaH2() {
+				let padre = document.querySelector("article");
+				let figli = document.querySelectorAll("article h2");
+				padre.removeChild(figli[figli.length-1]);
+			}*/
 		</Script>
 	</head>
 	<body>
@@ -62,7 +72,7 @@
 			rivela avvicinandosi molte sorgenti, pozze, caverne, 
 			peculiari fenomeni erosivi e antichi dipinti.</p>
 			<p>Uluṟu si trova in Australia (Oceania) nel Territorio del Nord, 
-			nel Parco nazionale <em>Uluṟ`client disconnesso (${ragione}), ${clients.length} client rimanenti`u-Kata Tjuta</em>, 450 km a sudovest della 
+			nel Parco nazionale <em>Uluṟ-Kata Tjuta</em>, 450 km a sudovest della 
 			città di <em>Alice Springs</em>. Si tratta di un <em>luogo sacro</em> per gli aborigeni, 
 			formalmente riconsegnato dal governo australiano agli indigeni del luogo nel 1985.</p>
 		</header>
