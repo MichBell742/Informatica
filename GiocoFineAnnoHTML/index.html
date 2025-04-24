@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acchiappa la talpa</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript" src="./script.js"></script>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Acchiappa la talpa</h1>
+            <p>Prendi la talpa il più velocemente possibile per accumulare il maggior numero di punti.</p>
+        </div>
+        <button><img src="settings.png" alt="impostazioni"></button>
+    </header>
+    <aside>
+        <h2>Strumenti bonus</h2>
+        <p>seleziona il tuo strumento bonus utilizzabile per i primi 20 sec. di gioco</p>  
+        <button onclick="selectItems('martello.cur')">
+            <img src="martello.png" alt="martello">
+        </button>
+        <button onclick="selectItems('bomba.cur')">
+            <img src="bomba.png" alt="martello">
+        </button>
+        <button onclick="selectItems('lucchetto.cur')">
+            <img src="lucchetto.png" alt="martello">
+        </button>
+    </aside>
+    <nav>
+        <button onclick="changeGameState()">Start</button>
+        <button id="pauseButton">Pause</button>
+    </nav>
+    <div id="table">
+        <div class="hole">
+        </div>
+        <div class="hole">
+        </div>
+        <div class="hole">
+        </div>
+        <div class="hole">
+        </div>
+        <div class="hole">
+        </div>
+        <div class="hole">
+        </div>
+        <div class="hole">
+        </div>
+        <div class="hole">
+        </div>
+        <div class="hole">
+        </div>
+    </div>
+    <footer>
+        <h2>Statistiche</h2>
+        <h3>Tempo: <span>00:00</span></h3>
+        <h3>Punteggio: <span>0</span></h3>
+        <table>
+            <tr>
+                <th colspan="3">Records</th>
+            </tr>
+            <tr>
+                <th>numero</th>
+                <th>tempo</th>
+                <th>punteggio</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td>x</td>
+                <td>x</td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>
