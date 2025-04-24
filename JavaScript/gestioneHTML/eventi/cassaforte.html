@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+- completare l'esercizio in modo che ogni volta che si preme un pulsante
+  il numero corrispondente viene accodato nella casella in alto
+- quando nella casella in alto compare 314 deve comparire un messaggio di allerta 
+  "cassaforte aperta" 
+-->
+<html>
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<style>
+			body {
+				margin:0;
+				height:100vh;
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: 1fr 1fr 1fr 1fr;
+				grid-gap:2vh;
+			}
+			body > * { font-size: 20vh ; border-radius:1rem;}
+			header {
+				grid-column: 1 / 4;
+				text-align: right;
+				border:2px solid black;
+				background-color: green;
+				color: white;
+			}
+			div {
+				display: inline-block;
+				border:2px solid orange;
+				background: yellow;
+				color: red;
+				text-align: center;
+			}
+		</style>
+		<script>
+            "use strict";
+            let testo="";
+            function clickSuPulsante(evento){
+                let elemento=evento.target;
+                let lettera=elemento.innerText;
+                console.log(lettera);
+                testo+=lettera;
+                document.querySelector("header").innerText=testo;
+                if(testo==314){
+                    alert("cassaforte sbloccata!!!");
+                    pulisci()
+                }
+                elemento.style.backgroundColor="rgb(255,200,0)";
+                window.setTimeout(function(){
+                    elemento.style.backgroundColor="yellow";
+                }, 250);
+            }
+            function pulisci(){
+                testo="";
+                document.querySelector("header").innerText=testo;
+                console.log("pulisci");
+            }
+            // questa funzione viene chiamata al caricamento della pagina
+            function paginaCaricata(){
+                // prendo tutti i div presenti nella pagina
+                let pulsanti = document.querySelectorAll("div");
+                // scorro uno per uno tutti i div della pagina
+                for(let i=0; i<pulsanti.length; i++){
+                    // aggiungo un gestore ad ogni div
+                    pulsanti[i].addEventListener("click",clickSuPulsante);
+                }
+            }
+		</script>
+	</head>
+	<body onload="paginaCaricata()">
+		<header onclick="pulisci()"></header>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<div>7</div>
+		<div>8</div>
+		<div>9</div>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function reposition(){
+            let pallini=document.getElementsByClassName("intorno");
+            
+        }
+    </script>
+    <style>
+        div{
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            border-radius:50%;
+        }
+        #centro{
+            background-color: red;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .intorno{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body onload="reposition()">
+    <div id="centro"></div>
+    <div class="intorno"></div>
+    <div class="intorno"></div>
+    <div class="intorno"></div>
+    <div class="intorno"></div>
+    <div class="intorno"></div>
+    <div class="intorno"></div>
+</body>
+</html>

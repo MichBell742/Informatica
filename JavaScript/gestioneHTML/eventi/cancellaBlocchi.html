@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cancella blocchi</title>
+    <script>
+        "use strict";
+        let padre;
+        function creaPagina(){
+            padre=document.querySelector("body");
+            for(let i=0; i<40; i++){
+                crea(i);
+            }
+        }
+        function cancella(el){
+            padre.removeChild(el);
+        }
+        function aggiungi(el){
+            console.log("destro");
+            crea(el.innerText);
+        }
+        function crea(testo){
+            let elemento= document.createElement("div");
+            elemento.innerText=testo;
+            elemento.setAttribute("onclick", "cancella(this)");
+            elemento.setAttribute("oncontextmenu", "aggiungi(this)");
+            padre.appendChild(elemento);
+        }
+    </script>
+    <style>
+        div{
+            display: inline-block;
+            font-size: 5em;
+            padding: 1rem;
+            border: 1px solid blue;
+            border-radius: 1rem;
+            background-color: lime;
+            margin: 0.25em;
+        }
+    </style>
+</head>
+<body onload="creaPagina()">
+</body>
+</html>

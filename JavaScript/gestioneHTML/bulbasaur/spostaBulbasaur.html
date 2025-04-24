@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            background-color: yellow;
+            border: 1px solid red;
+            padding: 0.5em;
+            display: inline;
+        }
+        p{
+            margin: 0 0 0 1em;
+            display: inline;
+        }
+    </style>
+    <script>
+        "use script";
+        function aggiungi(){
+            console.log("aggiungo");
+            let immagine=document.createElement("img");
+            immagine.setAttribute("onclick", "preso(event)");
+            immagine.setAttribute("src", "./Bulbasaur.png");
+            immagine.style.position="fixed";
+            let grandezzaX=parseInt(window.innerWidth);
+            let grandezzaY=parseInt(window.innerHeight);
+            immagine.style.left=Math.random()*(grandezzaX-218)+"px";
+            immagine.style.top=Math.random()*(grandezzaY-246)+40+"px";
+            document.querySelector("body").appendChild(immagine);
+        }
+        function spostaGiu(){
+            console.log("sposta");
+            let immagini=document.querySelectorAll("img");
+            immagini.forEach(element => {
+                let position=parseInt(element.style.top);
+                position+=16;
+                element.style.top=position+"px";
+            });
+        }
+        function preso(evento){
+            //somma punto
+            let lPunti=document.querySelector("p span");
+            let punti=lPunti.innerText;
+            punti++;
+            lPunti.innerText=punti;
+            //rimuovi immagine
+            let img=evento.target;
+            let padre=document.querySelector("body");
+            padre.removeChild(img);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="aggiungi()">aggiungi</button>
+    <p>Punti <span>0</span></p>
+    <button onclick="spostaGiu()">sposta giù</button>
+</body>
+</html>

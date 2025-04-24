@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #verde{
+            width: 10em;
+            height: 10em;
+            background-color: green;
+            position: fixed;
+            left: 4em;
+            top: 1em;
+        }
+        #rosso{
+            width: 10em;
+            height: 10em;
+            background-color: red;
+            position: fixed;
+            left: 3em;
+            top: 2em;
+        }
+    </style>
+    <script>
+        "on strict";
+        function spostaRosso(){
+            let quadrato=document.getElementById("rosso");
+            let posizioneLeft=parseInt(window.getComputedStyle(quadrato)["left"]);
+            console.log("posizione left rosso: "+posizioneLeft);
+            let fontSize=parseInt(window.getComputedStyle(quadrato)["font-size"]);
+            console.log("font-size: "+fontSize);
+            //convertiamo la misura in em
+            posizioneLeft=posizioneLeft/fontSize;
+            posizioneLeft++;
+            quadrato.style.left=posizioneLeft+"em";
+        }
+    </script>
+</head>
+<body>
+    <div id="verde">
+        verde
+    </div>
+    <div id="rosso" onclick="spostaRosso()">
+        rosso
+    </div>
+</body>
+</html>
