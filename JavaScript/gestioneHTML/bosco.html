@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albero</title>
+    <script>
+        "use script";
+        let alberiX=[{nome:"albero1.png",z:2},"erbaBassa.png","albero3.png"];
+        let alberi=["albero1.png","erbaBassa.png","albero3.png"];
+        function posiziona(){
+            for (let index = 0; index < 10; index++) {
+                let albero=document.createElement("img");
+                let nomeAlbero=alberi[Math.floor(Math.random()*alberi.length)];
+                albero.src= "./vegetazione/"+nomeAlbero;
+                albero.style.left=Math.random()*(window.innerWidth-407)+"px";
+                console.log(albero.src);
+                console.log(nomeAlbero.z);
+                if("erbaBassa.png"===nomeAlbero){
+                    albero.style.zIndex=1;
+                }
+                document.querySelector("body").appendChild(albero);
+            }
+        }
+    </script>
+    <style>
+        img{
+            display: inline;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body onload="posiziona()">
+    
+</body>
+</html>
