@@ -6,18 +6,39 @@
     <title>Timer</title>
     <script>
         let tempo=10;
+        let timer;
         function sottrai(){
+            if(timer==null){
+                timer=window.setInterval(sottrai, 1000);
+                document.querySelector("div").style.backgroundColor= "green";
+            }
             let par=document.querySelector("p");
             tempo--;
             par.innerText=tempo;
-            if(tempo===0){
-                document.querySelector(div).style.backgroundColor= "red";
+            if(tempo==0){
+                document.querySelector("div").style.backgroundColor= "red";
+                window.clearInterval(timer);
+                timer=null;
+                tempo=10;
             }
         }
     </script>
+    <style>
+        div{
+            width: 15em;
+            height: 7rem;
+            background-color: green;
+        }
+        div p{
+            display: inline-block;
+            font-size: 2rem;
+            height: 3rem;
+            margin:  2rem 1em;
+        }
+    </style>
 </head>
 <body>
-    <h1 onclick="window.setInterval()">Avvia Timer</h1>
+    <h1 onclick="sottrai()">Avvia Timer</h1>
     <div>
         <p>
             10
