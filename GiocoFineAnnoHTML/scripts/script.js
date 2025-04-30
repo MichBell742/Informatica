@@ -3,6 +3,12 @@
 let statoGioco=false;
 let imageTalpa=document.createElement("img");
 imageTalpa.setAttribute("src", "./src/images/talpa.png");
+imageTalpa.setAttribute("onclick", "hittedMole()");
+
+//variabili statistiche
+let nRecord=1;
+let punteggio=0;
+let tempo=0;
 
 let oldNum=0;
 function posizionaTalpa(){
@@ -12,10 +18,10 @@ function posizionaTalpa(){
         num=Math.floor(Math.random()*(buchi.length));
     }
     buchi[num].appendChild(imageTalpa);
-    console.log("talpa posizionata");
     oldNum=num;
 }
-let intervallo;
+let intervalloTalpa;
+let intervalloTempoStatistica;
 function changeGameState(){
     let bPause=document.getElementById("pauseButton");
     let bStatus=document.querySelector("nav button");
@@ -23,17 +29,60 @@ function changeGameState(){
         bPause.style.display="inline";
         bStatus.innerText="Stop";
         statoGioco=true;
+        document.getElementById("table").style.cursor="url('./src/cursors/martelloAlto.cur'), auto";
         changeButtonStatus(true);
         posizionaTalpa(); //facciamo comparire subito la talpa
-        intervallo=window.setInterval(posizionaTalpa, 500);
+        intervalloTalpa=window.setInterval(posizionaTalpa, 500);
+        intervalloTempoStatistica=window.setInterval(tempoStatistica, 1000);
     }else {
         bPause.style.display="none";
+        document.getElementById("table").style.cursor="";
         bPause.innerText="Pause";
         bStatus.innerText="Start";
         statoGioco=false;
-        window.clearInterval(intervallo);
+        window.clearInterval(intervalloTalpa);
+        window.clearInterval(intervalloTempoStatistica);
+        aggiungiRecord();
         ripulisciTable();
         changeButtonStatus(false);
+        let statistiche=document.querySelectorAll("section p span");
+        statistiche[0].innerText="0:00";
+        statistiche[1].innerText=0;
+    }
+}
+function hittedMole(){
+    // pos 0=time 1=punti
+    let statistiche=document.querySelectorAll("section p span");
+    punteggio+=1;
+    statistiche[1].innerText=punteggio;
+    console.log("colpita");
+}
+function tempoStatistica(){
+    tempo++;
+    let minuti=Math.floor(tempo/60);
+    let secondi=tempo-minuti*60
+    console.log(`${minuti}:${secondi<10?"0":""}${secondi}`);
+    let statistiche=document.querySelectorAll("section p span");
+    statistiche[0].innerText=`${minuti}:${secondi<10?"0":""}${secondi}`;
+}
+function aggiungiRecord(){
+    let table=document.querySelector("table");
+    let riga=document.createElement("tr");
+    let minuti=Math.floor(tempo/60);
+    let secondi=tempo-minuti*60
+    riga.innerHTML=`<tr><th>${nRecord}</th><td>${minuti}:${(secondi<10?"0":"")+secondi}</td><td>${punteggio}</td></tr>`
+    nRecord++;
+    punteggio=0;
+    tempo=0;
+    table.appendChild(riga);
+}
+/**
+ * abbassiamo il martello per 200mS
+ */
+function lowerAmmer(){
+    if(statoGioco){
+        document.getElementById("table").style.cursor="url('./src/cursors/martelloBasso.cur'), auto";
+        window.setTimeout(e=>{document.getElementById("table").style.cursor="url('./src/cursors/martelloAlto.cur'), auto";},150)
     }
 }
 function pauseOrPlay(evento){
@@ -41,11 +90,11 @@ function pauseOrPlay(evento){
     if(statoGioco){
         statoGioco=false;
         button.innerText="Play";
-        window.clearInterval(intervallo);
+        window.clearInterval(intervalloTalpa);
     }else{
         statoGioco=true;
         button.innerText="Pause";
-        intervallo=window.setInterval(posizionaTalpa, 500);
+        intervalloTalpa=window.setInterval(posizionaTalpa, 500);
     }
 }
 function changeButtonStatus(stato){
@@ -71,33 +120,27 @@ function selectItems(elemento){
 
 function posiziona(evento){
     let div=evento.target;
-    console.log(document.body.style.cursor.toString())
     //controllo che cursore è selezionato ed aggiungo l'immagine al div
     let img=document.createElement('img');
     switch (document.body.style.cursor.toString()){
         case 'url("./src/cursors/bomba.cur"), auto': 
-            console.log("posizionato bomba");
             img.setAttribute("src", "./src/images/bomba.png");
             img.setAttribute("onclick", "rimuoviStrumento(event)");
             div.appendChild(img);
             changeButtonStatus(true);
             break;
         case 'url("./src/cursors/lucchetto.cur"), auto': 
-            console.log("posizionato lucchetto");
             img.setAttribute("src", "./src/images/lucchetto.png");
             img.setAttribute("onclick", "rimuoviStrumento(event)");
             div.appendChild(img);
             changeButtonStatus(true);
             break;
         case 'url("./src/cursors/martello.cur"), auto': 
-            console.log("posizionato martello");
             img.setAttribute("src", "./src/images/martello.png");
             img.setAttribute("onclick", "rimuoviStrumento(event)");
             div.appendChild(img);
             changeButtonStatus(true);
             break;
-        default:
-            console.log("non corrisponde");
     }
     document.body.style.cursor="default";
 }
@@ -112,8 +155,6 @@ function rimuoviStrumento(event){
 function ripulisciTable(){
     let padre=document.querySelectorAll(".hole");
     let images=document.querySelectorAll(".hole img");
-    console.log(padre.length);
-    console.log(images.length);
     padre.forEach(elemento=>{
         images.forEach(image=>{
             if(elemento.contains(image)){

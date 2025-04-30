@@ -128,8 +128,7 @@ main{
 }
 .hole img{
     position: absolute;
-    margin: 1em;
-    width: 100px;
+    width: 135px;
 }
 #viewImpostazioni{
     position: fixed;
