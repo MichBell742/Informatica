@@ -132,13 +132,14 @@ main{
     width: 100px;
 }
 #viewImpostazioni{
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100vh;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     background-color: rgba(44, 0, 0, 0.26);
+    display: none;
 }
 #viewImpostazioni div{
     background-color: var(--first-bg-color);

@@ -19,22 +19,35 @@ let intervallo;
 function changeGameState(){
     let bPause=document.getElementById("pauseButton");
     let bStatus=document.querySelector("nav button");
-    if(!statoGioco){
+    if(!statoGioco && bPause.innerText != "Play"){
         bPause.style.display="inline";
         bStatus.innerText="Stop";
         statoGioco=true;
         changeButtonStatus(true);
-        intervallo=setInterval(posizionaTalpa, 500);
-    }else{
+        posizionaTalpa(); //facciamo comparire subito la talpa
+        intervallo=window.setInterval(posizionaTalpa, 500);
+    }else {
         bPause.style.display="none";
+        bPause.innerText="Pause";
         bStatus.innerText="Start";
         statoGioco=false;
-        clearInterval(intervallo);
+        window.clearInterval(intervallo);
         ripulisciTable();
         changeButtonStatus(false);
     }
 }
-
+function pauseOrPlay(evento){
+    let button=evento.target;
+    if(statoGioco){
+        statoGioco=false;
+        button.innerText="Play";
+        window.clearInterval(intervallo);
+    }else{
+        statoGioco=true;
+        button.innerText="Pause";
+        intervallo=window.setInterval(posizionaTalpa, 500);
+    }
+}
 function changeButtonStatus(stato){
     let pulsanti=document.querySelectorAll("aside button")
     if(stato){
@@ -114,5 +127,5 @@ function hideSettings(){
     document.getElementById("viewImpostazioni").style.display="none";
 }
 function viewSettings(){
-    document.getElementById("viewImpostazioni").style.display="";
+    document.getElementById("viewImpostazioni").style.display="block";
 }

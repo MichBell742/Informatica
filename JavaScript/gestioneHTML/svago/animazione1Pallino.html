@@ -6,29 +6,31 @@
     <title>Document</title>
     <script>
         "use strict"
-        let nPallini=8;
-        let radianti=(360/nPallini)*Math.PI/180;
+        let nPallini=1;
+        let gradi=0;
+        let halfWidthAndHeigth=50/2;
         function reposition(){
             generaPallini(nPallini);
             let centro=document.getElementById("centro");
-            let pallini=document.getElementsByClassName("intorno");
-            let halfWidthAndHeigth=50/2;
-            //coordinate polari
-            for(let i=0; i<nPallini; i++){
-                let numero=document.createElement("p");
-                numero.innerText=i;
-                pallini[i].appendChild(numero);
-                //per trovare la cordinata della x=Raggio*Cos(radianti)+XDelCentro
-                pallini[i].style.left=(Math.cos(radianti*i)*100)+parseInt(window.getComputedStyle(centro)["left"])-halfWidthAndHeigth+"px";
-                //per trovare la cordinata della y=Raggio*Sin(radianti)+YDelCentro
-                pallini[i].style.top=(Math.sin(radianti*i)*100)+parseInt(window.getComputedStyle(centro)["top"])-halfWidthAndHeigth+"px";
-            }
+            window.setInterval(muovi,5);
+        }
+        function muovi(){
+            let pallino=document.getElementById("intorno");
+            //per trovare la cordinata della x=Raggio*Cos(radianti)+XDelCentro
+            pallino.style.left=(Math.cos(getRadianti(gradi))*100)+parseInt(window.getComputedStyle(centro)["left"])-halfWidthAndHeigth+"px";
+            //per trovare la cordinata della y=Raggio*Sin(radianti)+YDelCentro
+            pallino.style.top=(Math.sin(getRadianti(gradi))*100)+parseInt(window.getComputedStyle(centro)["top"])-halfWidthAndHeigth+"px";
+            gradi+=2.5;
+        }
+        function getRadianti(gradi){
+            let radianti=gradi*Math.PI/180;
+            return radianti
         }
         function generaPallini(nPallini){
             let corpo=document.querySelector("body");
             for(let i=0; i<nPallini; i++){
                 let div=document.createElement("div");
-                div.setAttribute("class","intorno")
+                div.setAttribute("id","intorno")
                 corpo.appendChild(div);
             }
         }
@@ -46,7 +48,7 @@
             left: 50%;
             transform: translate(-50%,-50%);
         }
-        .intorno{
+        #intorno{
             background-color: blue;
             position: absolute;
 
