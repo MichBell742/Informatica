@@ -5,9 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        "use strict"
+        let nPallini=6;
+        let gradi=360/nPallini;
         function reposition(){
+            generaPallini(nPallini);
+            let centro=document.getElementById("centro");
             let pallini=document.getElementsByClassName("intorno");
-            
+            //coordinate polari
+            pallini.forEach(element => {
+                element.left=centro.left+100*Math.cos(0);
+            });
+        }
+        function generaPallini(nPallini){
+            let corpo=document.querySelector("body");
+            for(let i=0; i<nPallini; i++){
+                let div=document.createElement("div");
+                div.setAttribute("class","intorno")
+                corpo.appendChild(div);
+            }
         }
     </script>
     <style>
@@ -25,16 +41,12 @@
         }
         .intorno{
             background-color: blue;
+            position: absolute;
+
         }
     </style>
 </head>
 <body onload="reposition()">
     <div id="centro"></div>
-    <div class="intorno"></div>
-    <div class="intorno"></div>
-    <div class="intorno"></div>
-    <div class="intorno"></div>
-    <div class="intorno"></div>
-    <div class="intorno"></div>
 </body>
 </html>

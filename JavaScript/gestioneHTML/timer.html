@@ -7,19 +7,26 @@
     <script>
         let tempo=10;
         let timer;
-        function sottrai(){
-            if(timer==null){
-                timer=window.setInterval(sottrai, 1000);
+        function avvia(){
+            if(timer!=null){
+                console.log("reset");
+                window.clearInterval(timer);
+                timer=null;
+                let par=document.querySelector("p");
+                tempo=10;
+                par.innerText=tempo;
                 document.querySelector("div").style.backgroundColor= "green";
             }
+            timer=window.setInterval(sottrai, 1000);
+        }
+        function sottrai(){
             let par=document.querySelector("p");
             tempo--;
             par.innerText=tempo;
             if(tempo==0){
                 document.querySelector("div").style.backgroundColor= "red";
                 window.clearInterval(timer);
-                timer=null;
-                tempo=10;
+                tempo=11;
             }
         }
     </script>
@@ -38,7 +45,7 @@
     </style>
 </head>
 <body>
-    <h1 onclick="sottrai()">Avvia Timer</h1>
+    <h1 onclick="avvia()">Avvia Timer</h1>
     <div>
         <p>
             10

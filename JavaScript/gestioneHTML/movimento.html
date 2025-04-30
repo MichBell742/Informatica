@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movimento</title>
+    <script>
+        function inizia(){
+            window.setInterval(sposta, 100);
+        }
+        let posizione=0;
+        let opposto=false;
+        let step=15;
+        function sposta(){
+            let quadrato=document.querySelector("div");
+            quadrato.style.left=posizione+"px";
+            if(opposto){
+                posizione-=step;
+            }else{
+                posizione+=step;
+            }
+            if(posizione>=(window.innerWidth-100)){
+                opposto=true;
+            }else if(posizione<=0){
+                opposto=false;
+            }
+        }
+    </script>
+    <style>
+        div{
+            width: 100px;
+            height: 50px;
+            background-color: yellow;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body onload="inizia()">
+    <div>
+        <p>100x50</p>
+    </div>
+</body>
+</html>
