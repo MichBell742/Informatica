@@ -3,7 +3,8 @@
 let statoGioco=false;
 let imageTalpa=document.createElement("img");
 imageTalpa.setAttribute("src", "./src/images/talpa.png");
-imageTalpa.setAttribute("onclick", "hittedMole()");
+imageTalpa.setAttribute("onmousedown", "hittedMole(event)");
+imageTalpa.setAttribute("draggable", "false");
 
 //variabili statistiche
 let nRecord=1;
@@ -16,6 +17,22 @@ function posizionaTalpa(){
     let num=Math.floor(Math.random()*(buchi.length));
     while(oldNum===num){
         num=Math.floor(Math.random()*(buchi.length));
+        //controlliamo se nella posizione scelta ci siano dei strumenti
+        let strumento=document.getElementById("strumento");
+        if(strumento!=null && buchi[num].contains(strumento)){
+            let tipo="strumento.src";
+            if(tipo.indexOf("martello")!=-1){
+
+            }else if(tipo.indexOf("bomba")!=-1){
+                //se la posizione ha la bomba inseriamo una esplosione e aumentiamo 5 punti
+                let statistiche=document.querySelectorAll("section p span");
+                punteggio+=5;   
+                statistiche[1].innerText=punteggio;
+            }else if(tipo.indexOf("lucchetto")!=-1){
+                //se la posizione è bloccata dal lucchetto riposizioniamo la talpa
+                num=Math.floor(Math.random()*(buchi.length));
+            }
+        }
     }
     buchi[num].appendChild(imageTalpa);
     oldNum=num;
@@ -50,20 +67,42 @@ function changeGameState(){
         statistiche[1].innerText=0;
     }
 }
-function hittedMole(){
-    // pos 0=time 1=punti
-    let statistiche=document.querySelectorAll("section p span");
-    punteggio+=1;
-    statistiche[1].innerText=punteggio;
+function hittedMole(event){
+    if(statoGioco){
+        // pos 0=time 1=punti
+        let statistiche=document.querySelectorAll("section p span");
+        punteggio+=1;
+        statistiche[1].innerText=punteggio;
+        let padre=event.target.parentElement;
+        padre.removeChild(imageTalpa);
+        let talpaColpita=document.createElement("img");
+        talpaColpita.src="./src/images/talpaColpita.png";
+        talpaColpita.setAttribute("draggable", "false");
+        padre.appendChild(talpaColpita)
+        window.setTimeout(e=>{
+            if(padre.contains(talpaColpita)){
+                padre.removeChild(talpaColpita)
+            }
+        }, 500);
+    }
     console.log("colpita");
 }
 function tempoStatistica(){
-    tempo++;
-    let minuti=Math.floor(tempo/60);
-    let secondi=tempo-minuti*60
-    console.log(`${minuti}:${secondi<10?"0":""}${secondi}`);
-    let statistiche=document.querySelectorAll("section p span");
-    statistiche[0].innerText=`${minuti}:${secondi<10?"0":""}${secondi}`;
+    if(statoGioco){
+        tempo++;
+        let minuti=Math.floor(tempo/60);
+        let secondi=tempo-minuti*60
+        console.log(`${minuti}:${secondi<10?"0":""}${secondi}`);
+        let statistiche=document.querySelectorAll("section p span");
+        statistiche[0].innerText=`${minuti}:${secondi<10?"0":""}${secondi}`;
+        if(secondi===5){
+            let strumento=document.getElementById("strumento");
+            console.log(strumento);
+            if(strumento!=null){
+                strumento.parentElement.removeChild(strumento);
+            }
+        }
+    }
 }
 function aggiungiRecord(){
     let table=document.querySelector("table");
@@ -122,29 +161,30 @@ function posiziona(evento){
     let div=evento.target;
     //controllo che cursore è selezionato ed aggiungo l'immagine al div
     let img=document.createElement('img');
+    img.id="strumento";
     switch (document.body.style.cursor.toString()){
         case 'url("./src/cursors/bomba.cur"), auto': 
             img.setAttribute("src", "./src/images/bomba.png");
-            img.setAttribute("onclick", "rimuoviStrumento(event)");
+            img.setAttribute("onclick", "rimuoviStrumentoClick(event)");
             div.appendChild(img);
             changeButtonStatus(true);
             break;
         case 'url("./src/cursors/lucchetto.cur"), auto': 
             img.setAttribute("src", "./src/images/lucchetto.png");
-            img.setAttribute("onclick", "rimuoviStrumento(event)");
+            img.setAttribute("onclick", "rimuoviStrumentoClick(event)");
             div.appendChild(img);
             changeButtonStatus(true);
             break;
         case 'url("./src/cursors/martello.cur"), auto': 
             img.setAttribute("src", "./src/images/martello.png");
-            img.setAttribute("onclick", "rimuoviStrumento(event)");
+            img.setAttribute("onclick", "rimuoviStrumentoClick(event)");
             div.appendChild(img);
             changeButtonStatus(true);
             break;
     }
     document.body.style.cursor="default";
 }
-function rimuoviStrumento(event){
+function rimuoviStrumentoClick(event){
     if (!statoGioco) {
         let strumento=event.target;
         let padre = strumento.parentElement;

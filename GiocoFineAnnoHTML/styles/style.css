@@ -130,6 +130,16 @@ main{
     position: absolute;
     width: 135px;
 }
+/*blocco la possibilita di evidenziare gli elementi*/
+.hole img, .hole, #table{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+     user-select: none;
+
+}
 #viewImpostazioni{
     position: fixed;
     width: 100%;
