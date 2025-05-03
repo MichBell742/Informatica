@@ -3,7 +3,8 @@
 let statoGioco=false;
 let imageTalpa=document.createElement("img");
 imageTalpa.setAttribute("src", "./src/images/talpa.png");
-imageTalpa.setAttribute("onmousedown", "hittedMole(event)");
+imageTalpa.setAttribute("onclick", "hittedMole(event)");
+imageTalpa.addEventListener("touchstart", e=>hittedMole(e));
 imageTalpa.setAttribute("draggable", "false");
 
 //variabili statistiche
@@ -15,27 +16,31 @@ let oldNum=0;
 function posizionaTalpa(){
     let buchi=document.querySelectorAll(".hole");
     let num=Math.floor(Math.random()*(buchi.length));
-    while(oldNum===num){
+    //prendiamo le variabili utili a capire che strumento è
+    let strumento=document.getElementById("strumento");
+    //se lo strumento è posizionato nella table affidiamo l'src alla variabile
+    let tipo=strumento!=null ? strumento.src : "";
+    //se la posizione è la stessa della precedente oppure contiene il lucchetto cambia posizione
+    while(oldNum===num || (buchi[num].contains(strumento) && tipo.indexOf("lucchetto")!=-1)){
         num=Math.floor(Math.random()*(buchi.length));
-        //controlliamo se nella posizione scelta ci siano dei strumenti
-        let strumento=document.getElementById("strumento");
-        if(strumento!=null && buchi[num].contains(strumento)){
-            let tipo="strumento.src";
-            if(tipo.indexOf("martello")!=-1){
-
-            }else if(tipo.indexOf("bomba")!=-1){
-                //se la posizione ha la bomba inseriamo una esplosione e aumentiamo 5 punti
-                let statistiche=document.querySelectorAll("section p span");
-                punteggio+=5;   
-                statistiche[1].innerText=punteggio;
-            }else if(tipo.indexOf("lucchetto")!=-1){
-                //se la posizione è bloccata dal lucchetto riposizioniamo la talpa
-                num=Math.floor(Math.random()*(buchi.length));
-            }
-        }
     }
     buchi[num].appendChild(imageTalpa);
     oldNum=num;
+    //controlliamo se nella posizione scelta ci siano dei strumenti
+    if(buchi[num].contains(strumento)){
+        console.log("verifica strumento");
+        if(tipo.indexOf("martello")!=-1){
+            let statistiche=document.querySelectorAll("section p span");
+            punteggio+=1;   
+            statistiche[1].innerText=punteggio;
+        }else if(tipo.indexOf("bomba")!=-1){
+            //se la posizione ha la bomba inseriamo una esplosione e aumentiamo 5 punti
+            let statistiche=document.querySelectorAll("section p span");
+            punteggio+=5;   
+            statistiche[1].innerText=punteggio;
+            buchi[num].removeChild(strumento);
+        }
+    }
 }
 let intervalloTalpa;
 let intervalloTempoStatistica;
@@ -71,19 +76,24 @@ function hittedMole(event){
     if(statoGioco){
         // pos 0=time 1=punti
         let statistiche=document.querySelectorAll("section p span");
-        punteggio+=1;
-        statistiche[1].innerText=punteggio;
+        let strumento=document.getElementById("strumento");
         let padre=event.target.parentElement;
-        padre.removeChild(imageTalpa);
-        let talpaColpita=document.createElement("img");
-        talpaColpita.src="./src/images/talpaColpita.png";
-        talpaColpita.setAttribute("draggable", "false");
-        padre.appendChild(talpaColpita)
-        window.setTimeout(e=>{
-            if(padre.contains(talpaColpita)){
-                padre.removeChild(talpaColpita)
-            }
-        }, 500);
+        let padreStrumento;
+        //se la talpa si trova nel box dello strumento evitiamo di aggiungere un punto se colpita
+        if(strumento==null || (padreStrumento=strumento.parentElement)!=padre){
+            punteggio+=1;
+            statistiche[1].innerText=punteggio;
+            padre.removeChild(imageTalpa);
+            let talpaColpita=document.createElement("img");
+            talpaColpita.src="./src/images/talpaColpita.png";
+            talpaColpita.setAttribute("draggable", "false");
+            padre.appendChild(talpaColpita)
+            window.setTimeout(e=>{
+                if(padre.contains(talpaColpita)){
+                    padre.removeChild(talpaColpita)
+                }
+            }, 500);
+        }
     }
     console.log("colpita");
 }
@@ -95,7 +105,7 @@ function tempoStatistica(){
         console.log(`${minuti}:${secondi<10?"0":""}${secondi}`);
         let statistiche=document.querySelectorAll("section p span");
         statistiche[0].innerText=`${minuti}:${secondi<10?"0":""}${secondi}`;
-        if(secondi===5){
+        if(secondi===20){
             let strumento=document.getElementById("strumento");
             console.log(strumento);
             if(strumento!=null){
@@ -116,7 +126,7 @@ function aggiungiRecord(){
     table.appendChild(riga);
 }
 /**
- * abbassiamo il martello per 200mS
+ * abbassiamo il martello per 150mS
  */
 function lowerAmmer(){
     if(statoGioco){
@@ -161,23 +171,23 @@ function posiziona(evento){
     let div=evento.target;
     //controllo che cursore è selezionato ed aggiungo l'immagine al div
     let img=document.createElement('img');
+    img.setAttribute("draggable", "false");
+    img.setAttribute("onclick", "rimuoviStrumentoClick(event)");
+    img.style.zIndex=100;
     img.id="strumento";
     switch (document.body.style.cursor.toString()){
         case 'url("./src/cursors/bomba.cur"), auto': 
             img.setAttribute("src", "./src/images/bomba.png");
-            img.setAttribute("onclick", "rimuoviStrumentoClick(event)");
             div.appendChild(img);
             changeButtonStatus(true);
             break;
         case 'url("./src/cursors/lucchetto.cur"), auto': 
             img.setAttribute("src", "./src/images/lucchetto.png");
-            img.setAttribute("onclick", "rimuoviStrumentoClick(event)");
             div.appendChild(img);
             changeButtonStatus(true);
             break;
         case 'url("./src/cursors/martello.cur"), auto': 
             img.setAttribute("src", "./src/images/martello.png");
-            img.setAttribute("onclick", "rimuoviStrumentoClick(event)");
             div.appendChild(img);
             changeButtonStatus(true);
             break;
