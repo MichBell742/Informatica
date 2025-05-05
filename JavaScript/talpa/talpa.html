@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talpa</title>
+    <script>
+        let talpa;
+        let audio;
+        let title;
+        let punti=0;
+        function inizia(){
+            talpa=document.querySelector("img");
+            talpa.style.position="absolute";
+            audio=document.querySelector("audio");
+            title=document.querySelector("h1");
+            window.setInterval(sposta, 750);
+        }
+        function sposta(){
+            talpa.style.left=Math.random()*(window.innerWidth-100)+"px";
+            talpa.style.top=Math.random()*(window.innerHeight-100)+"px";
+        }
+        function presa(){
+            audio.play();
+            punti++;
+            title.innerText=punti;
+        }
+    </script>
+</head>
+<body onload="inizia()" style="background-color: green;">
+    <h1>0</h1>
+    <audio src="./martello.mp3"></audio>
+    <img src="./Diglett.png" alt="talpa" onclick="presa()" style="width: 100px;">
+</body>
+</html>
