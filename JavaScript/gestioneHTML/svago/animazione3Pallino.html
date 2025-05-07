@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        "use strict"
+        let nPallini=40;
+        let gradi=0;
+        let halfWidthAndHeigth=50/2;
+        function start(){
+            window.setInterval(muovi,5);
+        }
+        function reposition(){
+            generaPallini(nPallini);
+            let centro=document.getElementById("centro");
+        }
+        function muovi(){
+            let pallino=document.getElementById("intorno");
+            //per trovare la cordinata della x=Raggio*Cos(radianti)+XDelCentro
+            pallino.style.left=(Math.cos(getRadianti(gradi))*100)+parseInt(window.getComputedStyle(centro)["left"])-halfWidthAndHeigth+"px";
+            //per trovare la cordinata della y=Raggio*Sin(radianti)+YDelCentro
+            pallino.style.top=(Math.sin(getRadianti(gradi))*100)+parseInt(window.getComputedStyle(centro)["top"])-halfWidthAndHeigth+"px";
+            gradi+=2.5;
+        }
+        function getRadianti(gradi){
+            let radianti=gradi*Math.PI/180;
+            return radianti
+        }
+        function generaPallini(nPallini){
+            let corpo=document.querySelector("body");
+            for(let i=0; i<nPallini; i++){
+                let div=document.createElement("div");
+                div.setAttribute("id","intorno")
+                corpo.appendChild(div);
+            }
+        }
+    </script>
+    <style>
+        div{
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            border-radius:50%;
+        }
+        #centro{
+            background-color: red;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        #intorno{
+            background-color: blue;
+            position: absolute;
+
+        }
+    </style>
+</head>
+<body onload="reposition()">
+    <div id="centro" onclick="start()"></div>
+</body>
+</html>

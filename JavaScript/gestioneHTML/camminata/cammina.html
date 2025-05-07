@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cammina</title>
+    <style>
+        div { 
+            background-image: url('omino.png');
+            height:256px;
+            width:233px;
+            position: fixed;
+            }
+    </style>
+    <script>
+        let pos=0;
+        let posImg=0;
+        let image;
+        function startAn(){
+            image=document.querySelector("div");
+            image.style.backgroundPositionX=pos+"px";
+            window.setInterval(cambia,100);
+        }
+        function cambia(){
+            pos-=233.333333333333333;
+            posImg+=25;
+            if(posImg>=window.innerWidth){
+                posImg=0;
+            }
+            image.style.backgroundPositionX=pos+"px";
+            image.style.left=posImg+"px";
+        }
+    </script>
+</head>
+<body onload="startAn()">
+    <div></div>
+</body>
+</html>
