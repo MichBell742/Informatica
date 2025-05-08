@@ -3,7 +3,7 @@
 let statoGioco=false;
 let imageTalpa=document.createElement("img");
 imageTalpa.setAttribute("src", "./src/images/talpa.png");
-imageTalpa.setAttribute("onclick", "hittedMole(event)");
+imageTalpa.setAttribute("onmousedown", "hittedMole(event)");
 imageTalpa.addEventListener("touchstart", e=>hittedMole(e));
 imageTalpa.setAttribute("draggable", "false");
 
@@ -54,7 +54,7 @@ function changeGameState(){
         document.getElementById("table").style.cursor="url('./src/cursors/martelloAlto.cur'), auto";
         changeButtonStatus(true);
         posizionaTalpa(); //facciamo comparire subito la talpa
-        intervalloTalpa=window.setInterval(posizionaTalpa, 500);
+        intervalloTalpa=window.setInterval(posizionaTalpa, 2000);
         intervalloTempoStatistica=window.setInterval(tempoStatistica, 1000);
     }else {
         bPause.style.display="none";
