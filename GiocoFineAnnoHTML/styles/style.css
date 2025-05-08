@@ -20,11 +20,15 @@ body{
     grid-template-columns: 15em 1fr 1fr 10em;
     grid-template-rows: 10em auto 1fr auto;
     background-color: var(--second-bg-color);
+    grid-template-areas: 
+        "header header header header"
+        "aside nav nav section "
+        "aside main main section "
+        "footer footer footer footer";
 }
 header{
+    grid-area: header;
     padding: 1em;
-    grid-column: 1/5;
-    grid-row: 1/2;
     color: var(--first-text-color);
     text-shadow: 0 0 5px var(--first-bg-color), 0 0 10px var(--first-bg-color) ;
 }
@@ -47,27 +51,23 @@ nav{
     border-top-left-radius: 40px;
     border-top: 1px solid var(--second-bg-color);
     padding: 1em;
-    grid-row: 2/3;
-    grid-column: 2/4;
+    grid-area: nav;
     text-align: center;
     background-color: var(--first-bg-color);
 }
 aside{
     text-align: center;
     padding: 1em;
-    grid-column: 1/2;
-    grid-row: 2/4;
+    grid-area: aside;
 }
 section{
     border-top: 1px solid var(--second-bg-color);
     background-color: var(--first-bg-color);
-    grid-column: 4/5;
-    grid-row: 2/4;
+    grid-area: section;
 }
 footer{
     padding: 1em;
-    grid-column: 1/5;
-    grid-row: 4/5;
+    grid-area: footer;
 }
 footer table{
     width: 100%;
@@ -99,8 +99,7 @@ main{
     background-color: var(--first-bg-color);
     padding-bottom: 1em;
     border-bottom-left-radius: 40px;
-    grid-column: 2/4;
-    grid-row: 3/4;
+    grid-area: main;
 }
 #table{
     background-color: rgb(85, 50, 50);
@@ -128,7 +127,6 @@ main{
 }
 .hole img{
     position: absolute;
-    width: 135px;
 }
 /*blocco la possibilita di evidenziare gli elementi*/
 .hole img, .hole, #table{
@@ -155,10 +153,11 @@ main{
     left: 50%;
     transform: translate(-50%,-50%);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 #viewImpostazioni button{
     border-radius: 100%;
+    grid-column: 2/4;
     width: 75px;
     height: 75px;
     margin: auto;
@@ -169,11 +168,34 @@ main{
     width: 100%;
     font-size: 1.5rem
 }
+#viewImpostazioni p{
+    align-self: center;
+    width: 100%;
+    text-align: center;
+}
+#viewImpostazioni h3{
+    align-self: center;
+    width: 100%;
+    text-align: center;
+}
 @media (max-width: 1100px) {
     #table{
         width: 500px;
         height: 500px;
         row-gap: 2em;
         column-gap: 2em;
+    }
+}
+@media (max-width: 900px) {
+    body{
+        grid-template-columns: 1fr;
+        grid-template-rows: 10em auto auto auto 1fr auto;
+        grid-template-areas: 
+            "header"
+            "aside"
+            "section"
+            "nav"
+            "main"
+            "footer";
     }
 }

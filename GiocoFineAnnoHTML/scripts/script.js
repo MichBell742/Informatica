@@ -2,6 +2,7 @@
 
 let statoGioco=false;
 let imageTalpa=document.createElement("img");
+let widthTalpa;
 imageTalpa.setAttribute("src", "./src/images/talpa.png");
 imageTalpa.setAttribute("onmousedown", "hittedMole(event)");
 imageTalpa.addEventListener("touchstart", e=>hittedMole(e));
@@ -15,6 +16,8 @@ effEsplosione.setAttribute("src", "./src/video/esplosione.gif");
 let nRecord=1;
 let punteggio=0;
 let tempo=0;
+let volume=0.5;
+let difficolta=1;
 
 let audioMartello;
 let audioBomba;
@@ -22,12 +25,17 @@ function init(){
     audioMartello=document.getElementById("audioMartello");
     audioBomba=document.getElementById("audioBomba");
     resize();
+    updateDifficolta();
+    updateVolume();
 }
 
 function resize(){
     let buchi=document.getElementsByClassName("hole");
-    let cssBuchi=window.getComputedStyle(buchi[0]);
-    
+    widthTalpa=window.getComputedStyle(buchi[0]).width;
+    document.querySelectorAll(".hole img").forEach(elemento=>{
+        elemento.style.width=widthTalpa;
+        }   
+    );
 }
 
 let oldNum=0;
@@ -42,6 +50,7 @@ function posizionaTalpa(){
     while(oldNum===num || (buchi[num].contains(strumento) && tipo.indexOf("lucchetto")!=-1)){
         num=Math.floor(Math.random()*(buchi.length));
     }
+    imageTalpa.style.width=widthTalpa;
     buchi[num].appendChild(imageTalpa);
     oldNum=num;
     //controlliamo se nella posizione scelta ci siano dei strumenti
@@ -62,6 +71,7 @@ function posizionaTalpa(){
             punteggio+=5;   
             statistiche[1].innerText=punteggio;
             buchi[num].removeChild(strumento);
+            effEsplosione.style.width=widthTalpa;
             buchi[num].appendChild(effEsplosione);
             window.setTimeout(e=>{buchi[num].removeChild(effEsplosione);},325);
         }
@@ -80,7 +90,7 @@ function changeGameState(){
         document.getElementById("table").style.cursor="url('./src/cursors/martelloAlto.cur'), auto";
         changeButtonStatus(true);
         posizionaTalpa(); //facciamo comparire subito la talpa
-        intervalloTalpa=window.setInterval(posizionaTalpa, 2000);
+        intervalloTalpa=window.setInterval(posizionaTalpa, 1000/difficolta);
         intervalloTempoStatistica=window.setInterval(tempoStatistica, 1000);
     }else {
         bPause.style.display="none";
@@ -203,6 +213,7 @@ function posiziona(evento){
     let img=document.createElement('img');
     img.setAttribute("draggable", "false");
     img.setAttribute("onclick", "rimuoviStrumentoClick(event)");
+    img.style.width=widthTalpa;
     img.style.zIndex=100;
     img.id="strumento";
     switch (document.body.style.cursor.toString()){
@@ -249,4 +260,17 @@ function hideSettings(){
 }
 function viewSettings(){
     document.getElementById("viewImpostazioni").style.display="block";
+}
+function updateVolume(){
+    volume=document.getElementById("volume").value;
+    document.getElementById("valueVolume").innerText=volume;
+    audioMartello.volume=volume/100;
+    audioBomba.volume=volume/100;
+}
+function updateDifficolta(){
+    difficolta=document.getElementById("difficolà").value;
+    document.getElementById("valueDifficoltà").innerText=difficolta;
+    if(statoGioco){
+        alert("Per cambiare la difficoltà devi fermare il gioco e riavviarlo");
+    }
 }
