@@ -21,6 +21,13 @@ let audioBomba;
 function init(){
     audioMartello=document.getElementById("audioMartello");
     audioBomba=document.getElementById("audioBomba");
+    resize();
+}
+
+function resize(){
+    let buchi=document.getElementsByClassName("hole");
+    let cssBuchi=window.getComputedStyle(buchi[0]);
+    
 }
 
 let oldNum=0;
