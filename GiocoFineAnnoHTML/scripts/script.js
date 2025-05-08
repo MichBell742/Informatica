@@ -7,10 +7,21 @@ imageTalpa.setAttribute("onclick", "hittedMole(event)");
 imageTalpa.addEventListener("touchstart", e=>hittedMole(e));
 imageTalpa.setAttribute("draggable", "false");
 
+
+let effEsplosione=document.createElement("img");
+effEsplosione.setAttribute("src", "./src/video/esplosione.gif");
+
 //variabili statistiche
 let nRecord=1;
 let punteggio=0;
 let tempo=0;
+
+let audioMartello;
+let audioBomba;
+function init(){
+    audioMartello=document.getElementById("audioMartello");
+    audioBomba=document.getElementById("audioBomba");
+}
 
 let oldNum=0;
 function posizionaTalpa(){
@@ -30,18 +41,26 @@ function posizionaTalpa(){
     if(buchi[num].contains(strumento)){
         console.log("verifica strumento");
         if(tipo.indexOf("martello")!=-1){
+            if(!(audioMartello.paused)){
+                audioMartello.currentTime=0;
+            }
+            audioMartello.play();
             let statistiche=document.querySelectorAll("section p span");
             punteggio+=1;   
             statistiche[1].innerText=punteggio;
         }else if(tipo.indexOf("bomba")!=-1){
             //se la posizione ha la bomba inseriamo una esplosione e aumentiamo 5 punti
+            audioBomba.play();
             let statistiche=document.querySelectorAll("section p span");
             punteggio+=5;   
             statistiche[1].innerText=punteggio;
             buchi[num].removeChild(strumento);
+            buchi[num].appendChild(effEsplosione);
+            window.setTimeout(e=>{buchi[num].removeChild(effEsplosione);},325);
         }
     }
 }
+
 let intervalloTalpa;
 let intervalloTempoStatistica;
 function changeGameState(){
@@ -74,6 +93,10 @@ function changeGameState(){
 }
 function hittedMole(event){
     if(statoGioco){
+        if(!(audioMartello.paused)){
+            audioMartello.currentTime=0;
+        }
+        audioMartello.play();
         // pos 0=time 1=punti
         let statistiche=document.querySelectorAll("section p span");
         let strumento=document.getElementById("strumento");
