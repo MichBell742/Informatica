@@ -118,13 +118,13 @@ function hittedMole(event){
         let statistiche=document.querySelectorAll("section p span");
         let strumento=document.getElementById("strumento");
         let padre=event.target.parentElement;
-        let padreStrumento;
         //se la talpa si trova nel box dello strumento evitiamo di aggiungere un punto se colpita
         if(strumento==null || (padreStrumento=strumento.parentElement)!=padre){
             punteggio+=1;
             statistiche[1].innerText=punteggio;
             padre.removeChild(imageTalpa);
             let talpaColpita=document.createElement("img");
+            talpaColpita.style.width=widthTalpa;
             talpaColpita.src="./src/images/talpaColpita.png";
             talpaColpita.setAttribute("draggable", "false");
             padre.appendChild(talpaColpita)
