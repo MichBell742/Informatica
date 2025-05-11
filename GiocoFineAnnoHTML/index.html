@@ -11,6 +11,7 @@
     <!-- Audio -->
     <audio src="./src/audio/martello.mp3" id="audioMartello"></audio>
     <audio src="./src/audio/bomba.mp3" id="audioBomba"></audio>
+    <audio src="./src/audio/sottofondo.mp3" id="audioSottofondo" loop="true"></audio>
     <!-- ----- -->
     <header>
         <div>
@@ -22,13 +23,13 @@
     <aside>
         <h2>Strumenti bonus</h2>
         <p>seleziona il tuo strumento bonus utilizzabile per i primi 20 sec. di gioco</p>  
-        <button onclick="selectItems('martello.cur')">
+        <button onclick="selectItems(event, 'martello.cur')" onmouseover="mostraInfo(event, 'martello')">
             <img src="./src/images/martello.png" alt="martello">
         </button>
-        <button onclick="selectItems('bomba.cur')">
+        <button onclick="selectItems(event, 'bomba.cur')" onmouseover="mostraInfo(event, 'bomba')">
             <img src="./src/images/bomba.png" alt="bomba">
         </button>
-        <button onclick="selectItems('lucchetto.cur')">
+        <button onclick="selectItems(event, 'lucchetto.cur')" onmouseenter="mostraInfo(event, 'lucchetto')">
             <img src="./src/images/lucchetto.png" alt="lucchetto">
         </button>
     </aside>
@@ -84,11 +85,14 @@
             <h2>Settings</h2>
             <button onclick="hideSettings()"><img src="src/images/back.png" alt="torna indietro"></button>
             <h3>Difficoltà</h3>
-            <input type="range" min="1" max="4" value="2" class="slider" id="difficolà" onchange="updateDifficolta()">
+            <input type="range" min="1" max="4" value="2" class="slider" id="difficolà" oninput="updateDifficolta()">
             <p id="valueDifficoltà">2</p>
-            <h3>Volume</h3>
-            <input type="range" min="0" max="100" value="50" class="slider" id="volume" onchange="updateVolume()">
+            <h3>Volume Effetti</h3>
+            <input type="range" min="0" max="100" value="50" class="slider" id="volume" oninput="updateVolume()">
             <p id="valueVolume">50</p>
+            <h3>Volume Sottofondo</h3>
+            <input type="range" min="0" max="100" value="50" class="slider" id="volumeSottofondo" oninput="updateVolumeSottofondo()">
+            <p id="valueVolumeSottofondo">50</p>
         </div>
     </div>
 </body>

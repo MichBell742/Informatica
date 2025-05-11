@@ -21,12 +21,19 @@ let difficolta=1;
 
 let audioMartello;
 let audioBomba;
+let audioSottofondo;
 function init(){
     audioMartello=document.getElementById("audioMartello");
     audioBomba=document.getElementById("audioBomba");
+    audioSottofondo=document.getElementById("audioSottofondo");
+    if(window.innerWidth<350){
+        alert("Per un'esperienza migliore ti consiglio di giocare su uno schermo più grande di una dimensione di almeno 350px");
+    }
     resize();
     updateDifficolta();
     updateVolume();
+    updateVolumeSottofondo();
+    audioSottofondo.play();
 }
 
 function resize(){
@@ -36,6 +43,13 @@ function resize(){
         elemento.style.width=widthTalpa;
         }   
     );
+    //in questo modo disabilito la possibilità di mostrare le info degli strumenti
+    if(window.innerWidth<900){
+        console.log("rimuovo");
+       rimosso=false;
+    }else{
+        rimosso=true;
+    }
 }
 
 let oldNum=0;
@@ -57,10 +71,6 @@ function posizionaTalpa(){
     if(buchi[num].contains(strumento)){
         console.log("verifica strumento");
         if(tipo.indexOf("martello")!=-1){
-            if(!(audioMartello.paused)){
-                audioMartello.currentTime=0;
-            }
-            audioMartello.play();
             let statistiche=document.querySelectorAll("section p span");
             punteggio+=1;   
             statistiche[1].innerText=punteggio;
@@ -92,6 +102,8 @@ function changeGameState(){
         posizionaTalpa(); //facciamo comparire subito la talpa
         intervalloTalpa=window.setInterval(posizionaTalpa, 1000/difficolta);
         intervalloTempoStatistica=window.setInterval(tempoStatistica, 1000);
+        //interrompo lo scorrimanto della pagina cosicchè se si gioca da telefono non si muove la table
+        document.body.style.overflow="hidden";
     }else {
         bPause.style.display="none";
         document.getElementById("table").style.cursor="";
@@ -100,6 +112,8 @@ function changeGameState(){
         statoGioco=false;
         window.clearInterval(intervalloTalpa);
         window.clearInterval(intervalloTempoStatistica);
+        //riavvio lo scorrimento deolla pagina
+        document.body.style.overflow="auto";
         aggiungiRecord();
         ripulisciTable();
         changeButtonStatus(false);
@@ -119,7 +133,8 @@ function hittedMole(event){
         let strumento=document.getElementById("strumento");
         let padre=event.target.parentElement;
         //se la talpa si trova nel box dello strumento evitiamo di aggiungere un punto se colpita
-        if(strumento==null || (padreStrumento=strumento.parentElement)!=padre){
+        if(strumento===null || !(padre.contains(strumento))){
+            console.log("colpita");
             punteggio+=1;
             statistiche[1].innerText=punteggio;
             padre.removeChild(imageTalpa);
@@ -135,7 +150,6 @@ function hittedMole(event){
             }, 500);
         }
     }
-    console.log("colpita");
 }
 function tempoStatistica(){
     if(statoGioco){
@@ -203,8 +217,9 @@ function changeButtonStatus(stato){
     }
 }
 
-function selectItems(elemento){
+function selectItems(event, elemento){
     document.body.style.cursor = "url('./src/cursors/"+elemento+"'), auto";
+    event.target.parentElement.disabled=true;
 }
 
 function posiziona(evento){
@@ -267,10 +282,46 @@ function updateVolume(){
     audioMartello.volume=volume/100;
     audioBomba.volume=volume/100;
 }
+function updateVolumeSottofondo(){
+    volume=document.getElementById("volumeSottofondo").value;
+    document.getElementById("valueVolumeSottofondo").innerText=volume;
+    audioSottofondo.volume=volume/100;
+}
 function updateDifficolta(){
     difficolta=document.getElementById("difficolà").value;
     document.getElementById("valueDifficoltà").innerText=difficolta;
     if(statoGioco){
         alert("Per cambiare la difficoltà devi fermare il gioco e riavviarlo");
+    }
+}
+let rimosso=true;
+function mostraInfo(event, about){
+    let elemento=event.target;
+    //prendo il tag dell'elemento
+    let tag = elemento.tagName.toLowerCase();
+    if(tag==="button" && rimosso){
+        let info=document.createElement("div");
+        switch (about){
+            case "martello":
+                info.innerText="Questo strumento colpisce in automatico la talpa senza bisogno di un intervento dal giocatore, aggiunge 1 punto come se fosse il giocatore a colpirlo.";
+                elemento.appendChild(info);
+                break;
+            case "bomba":
+                info.innerText="Questo strumento esplode quando la talpa ci si trova sopra, aggiunge 5 punti ma una volta utilizzato scompare.";
+                elemento.appendChild(info);
+                break;
+            case "lucchetto":
+                info.innerText="Questo strumento impedisce alla talpa di passarci sopra così da facilitare il gioco.";
+                elemento.appendChild(info);
+                break;
+        }
+        rimosso=false;
+        elemento.addEventListener("mouseleave", funzione=>{
+            if(elemento.contains(info)){
+                elemento.removeChild(info);
+                rimosso=true;
+            }
+            elemento.removeEventListener("mouseleave", funzione);
+        })
     }
 }

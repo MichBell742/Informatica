@@ -1,8 +1,8 @@
 :root{
     --first-bg-color: rgb(137,172,118);
     --second-bg-color: rgb(145, 101, 51);
-    --first-text-color: rgb(0, 112, 0);
-    --second-text-color: rgb(63, 97, 63);
+    --first-text-color: rgb(41, 53, 41);
+    --second-text-color: rgb(74, 82, 74);
 }
 
 *{
@@ -11,6 +11,10 @@
 @font-face {
     font-family: 'fontGioco';
     src: url('../src/fonts/Melon\ Camp.ttf');
+}
+h2, h3, p{
+    color: var(--first-text-color);
+    text-shadow: 0 0 5px var(--first-bg-color), 0 0 10px var(--first-bg-color) ;
 }
 button{
     padding: 0;
@@ -77,6 +81,8 @@ footer table{
 }
 td,th{
     background-color: rgba(128, 128, 128, 0.473);
+    color: var(--first-text-color);
+    text-shadow: 0 0 5px var(--first-bg-color), 0 0 10px var(--first-bg-color) ;
     padding: 0.5em;
     width: 33%;
 }
@@ -94,6 +100,13 @@ button img{
 aside button{
     display: block;
     margin: 1em auto;
+    max-width: 300px;
+}
+aside button div{
+    width: 70%;
+    margin: 0.25em 15%;
+    font-family: fontGioco;
+    color: var(--second-text-color);
 }
 #pauseButton{
     display: none;
@@ -148,7 +161,7 @@ main{
 #viewImpostazioni div{
     background-color: var(--first-bg-color);
     width: 50%;
-    height: 50%;
+    height: min-content;
     border-radius: 50px;
     padding: 1em;
     position: absolute;
@@ -227,11 +240,14 @@ main{
     header p{
         display: none;
     }
+    #viewImpostazioni div{
+        width: 80%;
+    }
 }
 @media (max-width: 550px){
     #table{
-        width: 400px;
-        height: 400px;
+        width: 390px;
+        height: 390px;
         row-gap: 1em;
         column-gap: 1em;
     }
@@ -239,6 +255,7 @@ main{
         width: 33%;
     }
     #viewImpostazioni div{
+        width: 80%;
         grid-template-columns: 1fr;
     }
     #viewImpostazioni h2{
@@ -254,5 +271,14 @@ main{
     }
     #viewImpostazioni p{
         display: none;
+    }
+}
+@media (max-width: 390px){
+    #table{
+        width: 340px;
+        height: 340px;
+        row-gap: 1em;
+        column-gap: 1em;
+        padding: 35px;
     }
 }

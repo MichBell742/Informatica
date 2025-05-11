@@ -11,19 +11,38 @@
         }
         #bulbasaur{
             left: 300px;
-            top: 50px;
+            top: 500px;
         }
         #albero{
-            left: 100px;
-            top: 150px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
         }
     </style>
     <script>
+        let stato;
+        let bulb;
+        let pos=0;
+        let alb;
         function check(){
-            if(collisione(document.getElementById("bulbasaur").getBoundingClientRect(), document.getElementById("albero").getBoundingClientRect())){
+            bulb=document.getElementById("bulbasaur");
+            alb=document.getElementById("albero");
+            stato=document.querySelector("h1");
+            setInterval(controllo, 200);
+            document.addEventListener('mousemove', function(event) {
+                let mouseX = event.clientX;
+                let mouseY = event.clientY;
+                bulb.style.left = (mouseX-bulb.getBoundingClientRect().width/2) + "px";
+                bulb.style.top = (mouseY-bulb.getBoundingClientRect().height/2) + "px";
+            });
+        }
+        function controllo(){
+            if(collisione(bulb.getBoundingClientRect(),alb.getBoundingClientRect())){
                 console.log("collidono");
+                stato.innerText="collidono";
             }else{
                 console.log("non collidono");
+                stato.innerText="non collidono";
             }
         }
         function collisione(o1, o2){
@@ -38,14 +57,28 @@
             let x2=o2.x;
 
             let collisione=true;
-
-            if(){
-
+            if(x2+width2 < x1){
+                console.log("l'immagine non collide, si trova a destra");
+                collisione=false;
             }
+            if(x2 > x1+width1){
+                console.log("l'immagine non collide, si trova a sinistra");
+                collisione=false;
+            }
+            if(y2>y1+height1){
+                console.log("l'immagine non collide, si trova sotto");
+                collisione=false;
+            }
+            if(y1>y2+height2){
+                console.log("l'immagine non collide, si trova sopra");
+                collisione=false;
+            }
+            return collisione;
         }
     </script>
 </head>
 <body onload="check()">
+    <h1>CIAO</h1>
     <img src="bulbasaur/Bulbasaur.png" alt="bulbasaur" id="bulbasaur">
     <img src="vegetazione/albero2.png" alt="albero" id="albero">
 </body>
