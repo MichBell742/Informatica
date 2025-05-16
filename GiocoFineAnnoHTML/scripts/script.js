@@ -26,9 +26,6 @@ function init(){
     audioMartello=document.getElementById("audioMartello");
     audioBomba=document.getElementById("audioBomba");
     audioSottofondo=document.getElementById("audioSottofondo");
-    if(window.innerWidth<350){
-        alert("Per un'esperienza migliore ti consiglio di giocare su uno schermo più grande di una dimensione di almeno 350px");
-    }
     resize();
     updateDifficolta();
     updateVolume();
@@ -37,6 +34,12 @@ function init(){
 }
 
 function resize(){
+    if(window.innerWidth<350){
+        alert("Per un'esperienza migliore ti consiglio di giocare su uno schermo più grande che abbia una dimensione orizzontale di almeno 350px");
+    }
+    if(window.innerHeight<580){
+        alert("Per un'esperienza migliore ti consiglio di giocare su uno schermo più grande che abbia una dimensione verticale di almeno 580px");
+    }
     let buchi=document.getElementsByClassName("hole");
     widthTalpa=window.getComputedStyle(buchi[0]).width;
     document.querySelectorAll(".hole img").forEach(elemento=>{
@@ -45,8 +48,7 @@ function resize(){
     );
     //in questo modo disabilito la possibilità di mostrare le info degli strumenti
     if(window.innerWidth<900){
-        console.log("rimuovo");
-       rimosso=false;
+        rimosso=false;
     }else{
         rimosso=true;
     }
@@ -100,10 +102,13 @@ function changeGameState(){
         document.getElementById("table").style.cursor="url('./src/cursors/martelloAlto.cur'), auto";
         changeButtonStatus(true);
         posizionaTalpa(); //facciamo comparire subito la talpa
-        intervalloTalpa=window.setInterval(posizionaTalpa, 1000/difficolta);
+        intervalloTalpa=window.setInterval(posizionaTalpa, 1500/difficolta);
         intervalloTempoStatistica=window.setInterval(tempoStatistica, 1000);
         //interrompo lo scorrimanto della pagina cosicchè se si gioca da telefono non si muove la table
         document.body.style.overflow="hidden";
+        //posiziono il section delle statistiche nella parte più alta dello schermo cosicche la tabella sia visibile
+        let posY=document.querySelector("section").getBoundingClientRect().top+window.scrollY;
+        window.scrollTo(0,posY);
     }else {
         bPause.style.display="none";
         document.getElementById("table").style.cursor="";
@@ -217,38 +222,56 @@ function changeButtonStatus(stato){
     }
 }
 
+let strumentoSelez=null;
 function selectItems(event, elemento){
-    document.body.style.cursor = "url('./src/cursors/"+elemento+"'), auto";
-    event.target.parentElement.disabled=true;
-}
-
-function posiziona(evento){
-    let div=evento.target;
-    //controllo che cursore è selezionato ed aggiungo l'immagine al div
-    let img=document.createElement('img');
-    img.setAttribute("draggable", "false");
-    img.setAttribute("onclick", "rimuoviStrumentoClick(event)");
-    img.style.width=widthTalpa;
-    img.style.zIndex=100;
-    img.id="strumento";
-    switch (document.body.style.cursor.toString()){
-        case 'url("./src/cursors/bomba.cur"), auto': 
-            img.setAttribute("src", "./src/images/bomba.png");
-            div.appendChild(img);
-            changeButtonStatus(true);
-            break;
-        case 'url("./src/cursors/lucchetto.cur"), auto': 
-            img.setAttribute("src", "./src/images/lucchetto.png");
-            div.appendChild(img);
-            changeButtonStatus(true);
-            break;
-        case 'url("./src/cursors/martello.cur"), auto': 
-            img.setAttribute("src", "./src/images/martello.png");
-            div.appendChild(img);
-            changeButtonStatus(true);
-            break;
+    let target;
+    if(event.target.tagName.toLowerCase()=="button"){
+        target=event.target;
+    }else{
+        target=event.target.parentElement;
     }
-    document.body.style.cursor="default";
+    console.log(target);
+    document.body.style.cursor = "url('./src/cursors/"+elemento+"'), auto";
+    //imposto il pulsante a disabilitato appena viene cliccato così da rendere visibile sui dipositivi mobili lo strumento scelto
+    if(strumentoSelez===null){
+        strumentoSelez=target;
+        strumentoSelez.disabled=true;
+    }else{
+        strumentoSelez.disabled=false;
+        strumentoSelez=target;
+        strumentoSelez.disabled=true;
+    }
+}
+function posiziona(evento){
+    if(!statoGioco){
+        let div=evento.target;
+        //controllo che cursore è selezionato ed aggiungo l'immagine al div
+        let img=document.createElement('img');
+        img.setAttribute("draggable", "false");
+        img.setAttribute("onclick", "rimuoviStrumentoClick(event)");
+        img.style.width=widthTalpa;
+        img.style.zIndex=100;
+        img.id="strumento";
+        switch (document.body.style.cursor.toString()){
+            case 'url("./src/cursors/bomba.cur"), auto': 
+                img.setAttribute("src", "./src/images/bomba.png");
+                div.appendChild(img);
+                changeButtonStatus(true);
+                break;
+            case 'url("./src/cursors/lucchetto.cur"), auto': 
+                img.setAttribute("src", "./src/images/lucchetto.png");
+                div.appendChild(img);
+                changeButtonStatus(true);
+                break;
+            case 'url("./src/cursors/martello.cur"), auto': 
+                img.setAttribute("src", "./src/images/martello.png");
+                div.appendChild(img);
+                changeButtonStatus(true);
+                break;
+        }
+        document.body.style.cursor="default";
+    }
+    
 }
 function rimuoviStrumentoClick(event){
     if (!statoGioco) {
