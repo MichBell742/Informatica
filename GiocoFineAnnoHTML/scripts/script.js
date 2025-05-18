@@ -22,17 +22,35 @@ let difficolta=1;
 let audioMartello;
 let audioBomba;
 let audioSottofondo;
+let buttonAudioSottofonodo;
 function init(){
     audioMartello=document.getElementById("audioMartello");
     audioBomba=document.getElementById("audioBomba");
     audioSottofondo=document.getElementById("audioSottofondo");
+    buttonAudioSottofonodo=document.querySelector("#viewImpostazioni div article button");
+    //controlliamo se l'audio di sottofondo cambia di stato così da eseguire il cambio di testo nel pulsante
+    //anche se il suono viene fermato da un punto che non sia il button.
+    audioSottofondo.addEventListener("play",e=>{
+        buttonAudioSottofonodo.innerText="stop";
+    })
+    audioSottofondo.addEventListener("pause",e=>{
+        buttonAudioSottofonodo.innerText="start";
+    })
+    //eseguiamo le configurazioni iniziali così da sincronizzare i valori delle impostazioni con quelli del gioco
     resize();
     updateDifficolta();
     updateVolume();
     updateVolumeSottofondo();
-    audioSottofondo.play();
+    startOrStopBackgroundMusic();
 }
-
+function startOrStopBackgroundMusic(){
+    if(audioSottofondo.paused){
+        audioSottofondo.play();
+    }else{
+        audioSottofondo.pause();
+        audioSottofondo.currentTime=0;
+    }
+}
 function resize(){
     if(window.innerWidth<350){
         alert("Per un'esperienza migliore ti consiglio di giocare su uno schermo più grande che abbia una dimensione orizzontale di almeno 350px");
@@ -104,11 +122,17 @@ function changeGameState(){
         posizionaTalpa(); //facciamo comparire subito la talpa
         intervalloTalpa=window.setInterval(posizionaTalpa, 1500/difficolta);
         intervalloTempoStatistica=window.setInterval(tempoStatistica, 1000);
-        //interrompo lo scorrimanto della pagina cosicchè se si gioca da telefono non si muove la table
-        document.body.style.overflow="hidden";
-        //posiziono il section delle statistiche nella parte più alta dello schermo cosicche la tabella sia visibile
-        let posY=document.querySelector("section").getBoundingClientRect().top+window.scrollY;
-        window.scrollTo(0,posY);
+        //controlliamo se il dispositivo che utilizziamo sia di tipo mobile
+        // /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+        //effettua un test sulla variabile restituita da navigator.userAgent
+        //controlla se una delle parole separate da '|' sia presente all'interno della stringa
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            //interrompo lo scorrimanto della pagina cosicchè se si gioca da telefono non si muove la table
+            document.body.style.overflow="hidden";
+            //posiziono il section delle statistiche nella parte più alta dello schermo cosicche la tabella sia visibile
+            let posY=document.querySelector("section").getBoundingClientRect().top+window.scrollY;
+            window.scrollTo(0,posY);
+        }
     }else {
         bPause.style.display="none";
         document.getElementById("table").style.cursor="";

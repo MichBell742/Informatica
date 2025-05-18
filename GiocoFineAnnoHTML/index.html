@@ -90,7 +90,10 @@
             <h3>Volume Effetti</h3>
             <input type="range" min="0" max="100" value="50" class="slider" id="volume" oninput="updateVolume()">
             <p id="valueVolume">50</p>
-            <h3>Volume Sottofondo</h3>
+            <article>
+                <h3>Volume Sottofondo</h3>
+                <button onclick="startOrStopBackgroundMusic()"><p>stop</p></button>
+            </article>
             <input type="range" min="0" max="100" value="50" class="slider" id="volumeSottofondo" oninput="updateVolumeSottofondo()">
             <p id="valueVolumeSottofondo">50</p>
         </div>
