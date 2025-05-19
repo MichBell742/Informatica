@@ -12,13 +12,14 @@ imageTalpa.setAttribute("draggable", "false");
 let effEsplosione=document.createElement("img");
 effEsplosione.setAttribute("src", "./src/video/esplosione.gif");
 
-//variabili statistiche
+//variabili globali utili
 let nRecord=1;
 let punteggio=0;
 let tempo=0;
 let volume=0.5;
 let difficolta=1;
 
+//elementi del DOM richiamati frequentemente
 let audioMartello;
 let audioBomba;
 let audioSottofondo;
@@ -34,7 +35,7 @@ function init(){
         buttonAudioSottofonodo.innerText="stop";
     })
     audioSottofondo.addEventListener("pause",e=>{
-        buttonAudioSottofonodo.innerText="start";
+        buttonAudioSottofonodo.innerText="play";
     })
     //eseguiamo le configurazioni iniziali così da sincronizzare i valori delle impostazioni con quelli del gioco
     resize();
@@ -42,6 +43,10 @@ function init(){
     updateVolume();
     updateVolumeSottofondo();
     startOrStopBackgroundMusic();
+    //a causa dei consensi della pagina l'audio può non partire e dobbiamo quindi cambiare la scritta al pulsante
+    if(audioSottofondo.paused){
+        buttonAudioSottofonodo.innerText="play";
+    }
 }
 function startOrStopBackgroundMusic(){
     if(audioSottofondo.paused){
@@ -226,7 +231,7 @@ function pauseOrPlay(evento){
     }else{
         statoGioco=true;
         button.innerText="Pause";
-        intervalloTalpa=window.setInterval(posizionaTalpa, 500);
+        intervalloTalpa=window.setInterval(posizionaTalpa, 1500/difficolta);
     }
 }
 function changeButtonStatus(stato){
@@ -295,7 +300,6 @@ function posiziona(evento){
         }
         document.body.style.cursor="default";
     }
-    
 }
 function rimuoviStrumentoClick(event){
     if (!statoGioco) {
@@ -305,15 +309,11 @@ function rimuoviStrumentoClick(event){
         changeButtonStatus(false);
     }
 }
+//ripulisco il tavolo di gioco dalle immagini
 function ripulisciTable(){
-    let padre=document.querySelectorAll(".hole");
     let images=document.querySelectorAll(".hole img");
-    padre.forEach(elemento=>{
-        images.forEach(image=>{
-            if(elemento.contains(image)){
-                elemento.removeChild(image);
-            }
-        });
+    images.forEach(image=>{
+        image.parentElement.removeChild(image);
     });
 }
 
@@ -337,8 +337,8 @@ function updateVolumeSottofondo(){
 function updateDifficolta(){
     difficolta=document.getElementById("difficolà").value;
     document.getElementById("valueDifficoltà").innerText=difficolta;
-    if(statoGioco){
-        alert("Per cambiare la difficoltà devi fermare il gioco e riavviarlo");
+    if(statoGioco && document.getElementById("pauseButton").innerText==="Pause"){
+        alert("per modificare la difficoltà hai bisogno di fermare o mettere in pausa la partita, ricorda di farlo o la difficoltà non cambierà.");
     }
 }
 let rimosso=true;
