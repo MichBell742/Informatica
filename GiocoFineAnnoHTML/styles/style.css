@@ -158,6 +158,7 @@ main{
     transform: translate(-50%,-50%);
     background-color: rgba(44, 0, 0, 0.26);
     display: none;
+    z-index: 100;
 }
 #viewImpostazioni div{
     background-color: var(--first-bg-color);
