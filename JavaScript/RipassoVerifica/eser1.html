@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            width: 70%;
+            margin: 1em 15%;
+            padding: 1em;
+            background-color: rgb(228, 121, 255);
+        }
+        #rett{
+            width: 100px;
+            height: 25px;
+            background-color: blanchedalmond;
+            margin: 10px;
+            position: absolute;
+        }
+        .altezza{
+            height: 50px;
+        }
+    </style>
+    <script>
+        "use strict";
+        let rettangolo;
+        function init(){
+            spostaDestra();
+            rettangolo=document.getElementById("rett");
+            posX=rettangolo.getBoundingClientRect().x;
+            setInterval(muoviRettangolo, 5);
+        }
+        let destra;
+        function spostaDestra(){
+            destra=true;
+        }
+        function spostaSinistra(){
+            destra=false;
+        }
+        let posX;
+        function muoviRettangolo(){
+            if(destra){
+                posX++;
+            }else{
+                posX--;
+            }
+            //controlla se ha finito lo spazio
+            if(posX+100 >= rettangolo.parentElement.getBoundingClientRect().right && destra){
+                spostaSinistra();
+            }
+            if(posX <= rettangolo.parentElement.getBoundingClientRect().left && !destra){
+                spostaDestra();
+            }
+            rettangolo.style.left=posX+"px";
+        }
+        function cambiaColore(event){
+            let par=event.target;
+            par.style.color=`rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`
+        }
+        function cambiaParole(event){
+            let par=event.target;
+            let parole=par.innerText.split(" ");
+            parole=mischiaElementi(parole);
+            let stringaOut="";
+            parole.forEach(element => {
+                stringaOut+=element+" ";
+            });
+            par.innerText=stringaOut;
+        }
+        function mischiaElementi(vettore){
+            for(let i=0; i<vettore.length/2; i++){
+                let appoggio=vettore[i];
+                let num=parseInt(Math.random()*vettore.length  -1);
+                console.log(num);
+                vettore[i]=vettore[num];
+                vettore[num]=appoggio;
+            }
+            return vettore;
+        }
+    </script>
+</head>
+<body onload="init()">
+    <!-- realizzare una pagina web con javascript che:
+    1- sposta un rettangolo nella pagina e controllato da dei pulsanti si sposta in un verso o nell'altro;
+    2- fai un testo che cliccato cambia (color: ... ;) colore in modo random;
+    3- cliccato lo stesso testo precedente con il tasto destro del mouse modifica l'ordine delle parole;
+    -->
+    <!-- rettangolo -->
+    <section class="altezza">
+        <button onclick="spostaSinistra()">sposta on sinistra</button>
+        <button onclick="spostaDestra()">sposta on destra</button>
+        <div id="rett"></div>
+    </section>
+    <!-- testo -->
+    <section>
+        <p onclick="cambiaColore(event)" oncontextmenu="cambiaParole(event)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis pretium lacus. Nulla luctus tellus ac imperdiet sodales. In consequat finibus gravida. Vestibulum euismod porta tortor sollicitudin imperdiet. Nulla condimentum turpis quam, a iaculis metus porttitor sed. Morbi posuere enim a imperdiet sodales. Vestibulum dictum, dolor malesuada pulvinar ultricies, mi.</p>
+    </section>
+</body>
+</html>
