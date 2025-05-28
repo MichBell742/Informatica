@@ -45,14 +45,14 @@
             }else{
                 posX--;
             }
+            rettangolo.style.left=posX+"px";
             //controlla se ha finito lo spazio
-            if(posX+100 >= rettangolo.parentElement.getBoundingClientRect().right && destra){
+            if(posX+110 >= rettangolo.parentElement.getBoundingClientRect().right && destra){
                 spostaSinistra();
             }
-            if(posX <= rettangolo.parentElement.getBoundingClientRect().left && !destra){
+            if(posX+10 <= rettangolo.parentElement.getBoundingClientRect().left && !destra){
                 spostaDestra();
             }
-            rettangolo.style.left=posX+"px";
         }
         function cambiaColore(event){
             let par=event.target;
@@ -69,9 +69,9 @@
             par.innerText=stringaOut;
         }
         function mischiaElementi(vettore){
-            for(let i=0; i<vettore.length/2; i++){
+            for(let i=0; i<vettore.length; i++){
                 let appoggio=vettore[i];
-                let num=parseInt(Math.random()*vettore.length  -1);
+                let num=parseInt(Math.random()*(vettore.length-1));
                 console.log(num);
                 vettore[i]=vettore[num];
                 vettore[num]=appoggio;
