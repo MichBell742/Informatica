@@ -1,0 +1,12 @@
+- puoi modificare l'HTML ma fallo il meno possibile
+- se premi spazio il numero nel primo box viene diviso per due,
+  qualsiasi altro tasto si moltiplica per due
+- al clik sull'immagine del dinosauro deve cambiare
+  (usa le due immagini del dinosauro alternandole)
+- al click su "cavallo" le parole "cavallo" nel testo diventano rosse
+  (ma non quella nel box)
+- al click su "fuggi" l'immagine del dinosauro si sposta verso destra fino a scomparire
+- al click su "ferma" l'immagine del dinosauro si ferma
+- al click su mappa compare una mappa random 4x3 pezzi
+  creata utilizzando l'immagine bosco.png (dimensione del blocco 100x100 pixel)
+- al click su un tassello della mappa questo scompare
