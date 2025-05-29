@@ -56,11 +56,14 @@ function startOrStopBackgroundMusic(){
         audioSottofondo.currentTime=0;
     }
 }
+let avvertito=false;
 function resize(){
-    if(window.innerWidth<350){
+    if(window.innerWidth<350 && !avvertito){
+        avvertito=true;
         alert("Per un'esperienza migliore ti consiglio di giocare su uno schermo più grande che abbia una dimensione orizzontale di almeno 350px");
     }
-    if(window.innerHeight<580){
+    if(window.innerHeight<580 && !avvertito){
+        avvertito=true;
         alert("Per un'esperienza migliore ti consiglio di giocare su uno schermo più grande che abbia una dimensione verticale di almeno 580px");
     }
     let buchi=document.getElementsByClassName("hole");
@@ -106,8 +109,16 @@ function posizionaTalpa(){
             punteggio+=5;   
             statistiche[1].innerText=punteggio;
             buchi[num].removeChild(strumento);
+            buchi[num].removeChild(imageTalpa);
             effEsplosione.style.width=widthTalpa;
+            let talpaColpita=hittedMoleImage();
+            buchi[num].appendChild(talpaColpita);
             buchi[num].appendChild(effEsplosione);
+            window.setTimeout(e=>{
+                if(buchi[num].contains(talpaColpita)){
+                    buchi[num].removeChild(talpaColpita)
+                }
+            }, 500);
             window.setTimeout(e=>{buchi[num].removeChild(effEsplosione);},325);
         }
     }
@@ -158,6 +169,7 @@ function changeGameState(){
 }
 function hittedMole(event){
     if(statoGioco){
+        //restartiamo il suono del martello
         if(!(audioMartello.paused)){
             audioMartello.currentTime=0;
         }
@@ -172,10 +184,7 @@ function hittedMole(event){
             punteggio+=1;
             statistiche[1].innerText=punteggio;
             padre.removeChild(imageTalpa);
-            let talpaColpita=document.createElement("img");
-            talpaColpita.style.width=widthTalpa;
-            talpaColpita.src="./src/images/talpaColpita.png";
-            talpaColpita.setAttribute("draggable", "false");
+            let talpaColpita=hittedMoleImage();
             padre.appendChild(talpaColpita)
             window.setTimeout(e=>{
                 if(padre.contains(talpaColpita)){
@@ -184,6 +193,13 @@ function hittedMole(event){
             }, 500);
         }
     }
+}
+function hittedMoleImage(){
+    let talpaColpita=document.createElement("img");
+    talpaColpita.style.width=widthTalpa;
+    talpaColpita.src="./src/images/talpaColpita.png";
+    talpaColpita.setAttribute("draggable", "false");
+    return talpaColpita;
 }
 function tempoStatistica(){
     if(statoGioco){

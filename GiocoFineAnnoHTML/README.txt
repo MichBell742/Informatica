@@ -1,0 +1,4 @@
+Il gioco consiste nel prendere una talpa con l'unico utilizzo del mouse. 
+Durante il gioco se si clicca la talpa con il pulsante sinistro del mouse viene aumentato il punteggio e la talpa scompare, durante il gioco non sono implementate altre funzioni.
+se il gioco è in stop, puoi aggiungere gli strumenti che possono essere inseriti selezionandolo e poi cliccando sul buco scelto e si può rimuovere con il semplice utilizzo dello stesso pulsante sinistro sullo strumento nella table.
+Dalle impostazioni si possono cambiare le difficolta dalla 1 che implica una alternanza di 1,5 Sec a 4 che implica una alternanza di 0,375 Sec cioè 1/4 di 1,5; si può anche cambiare il volume degli effetti e della musica di sottofondo, quest'ultima si può anche attivare o disattivare a piacimento.
