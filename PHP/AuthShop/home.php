@@ -33,5 +33,7 @@
         echo "<h4>lingua: {$row['lingua']}</h4><br>";
     ?>
     <h2>Gestisci <a href="preferenze.php">preferenze</a></h2>
+    <h2>Catalogo <a href="catalogo.php">catalogo</a></h2>
+    <h2>carrello <a href="carrello.php">carrello</a></h2>
 </body>
 </html>
