@@ -6,26 +6,26 @@
     <title>leggi CSV indirizzi</title>
 </head>
 <body>
-    <form action="articoli.php" method="POST">
-        <label for="Cod_Articolo">Codice Articolo</label><br>
-        <input type="text" name="Cod_Articolo" ><br>
+    <form action="articoli3.php" method="POST">
+        <label for="cod_articolo">Codice Articolo</label><br>
+        <input type="text" name="cod_articolo" ><br>
         
-        <label for="Descrizione">Descrizione</label><br>
-        <input type="text" name="Descrizione" ><br>
+        <label for="descrizione">Descrizione</label><br>
+        <input type="text" name="descrizione" ><br>
         
-        <label for="Quantita">Quantita</label><br>
-        <input type="number" name="Quantita" value="1"><br>
+        <label for="quantita">Quantita</label><br>
+        <input type="number" name="quantita" value="1"><br>
         
-        <label for="Prezzo">Prezzo</label><br>
+        <label for="prezzo">Prezzo</label><br>
         <span>€</span>
-        <input type="number" name="Prezzo" min="0" step="0.01" placeholder="0.00" ><br>
+        <input type="number" name="prezzo" min="0" step="0.01" placeholder="0.00" ><br>
 
-        <label for="Cod_Fornitore">codice fornitore</label><br>
-        <input type="text" name="Cod_Fornitore" ><br>
+        <label for="cod_fornitore">codice fornitore</label><br>
+        <input type="text" name="cod_fornitore" ><br>
 
-        <input type="submit" name="azione" value="crea"> <!-- crea file di testo eliminando il vecchio; puo essere vuoto o con una riga in base allo stato degli input sopra -->
-        <input type="submit" name="azione" value="aggiungi"> <!-- aggiunge una riga al file CSV -->
-        <input type="submit" name="azione" value="carica DB"> <!-- aggiunge le nuove righe del csv al DB -->
+        <input type="submit" name="azione" value="crea">
+        <input type="submit" name="azione" value="aggiungi">
+        <input type="submit" name="azione" value="carica DB">
 
     </form>
 </body>

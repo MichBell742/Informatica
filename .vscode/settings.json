@@ -3,6 +3,9 @@
         "*": false,
         "plaintext": false,
         "markdown": false,
-        "scminput": false
+        "scminput": false,
+        "html": false,
+        "cpp": false,
+        "python": false
     }
 }

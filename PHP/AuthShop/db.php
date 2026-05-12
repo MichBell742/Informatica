@@ -7,10 +7,10 @@
     }
 
     function purifyString($conn, $strings) {
-            $purifiedValues;
-            foreach ($strings as $key => $value) {
-                $purifiedValues[$key]=mysqli_real_escape_string($conn, $value);
-            }
-            return $purifiedValues;
+        $purifiedValues;
+        foreach ($strings as $key => $value) {
+            $purifiedValues[$key]=mysqli_real_escape_string($conn, $value);
         }
+        return $purifiedValues;
+    }
 ?>
